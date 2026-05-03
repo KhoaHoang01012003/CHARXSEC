@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CHARX_WORKSPACE="${CHARX_WORKSPACE:-/mnt/d/CHARXSEC}"
+COMMON_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DEFAULT_CHARX_WORKSPACE="$(cd "${COMMON_SCRIPT_DIR}/../../.." && pwd)"
+CHARX_WORKSPACE="${CHARX_WORKSPACE:-${DEFAULT_CHARX_WORKSPACE}}"
 CHARX_LAB_USER="${CHARX_LAB_USER:-}"
 
 if [[ -z "${CHARX_LAB_USER}" ]]; then
@@ -118,4 +120,3 @@ umount_if_mounted() {
     umount "$target" || umount -l "$target"
   fi
 }
-

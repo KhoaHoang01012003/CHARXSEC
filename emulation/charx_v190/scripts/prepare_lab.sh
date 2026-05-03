@@ -19,6 +19,11 @@ mkdir -p "$SOURCE_DIR" "$ROOTFS_RO" "$BOOT_DIR" "$VOLUME_DIR" "$RUNS_DIR" "$MOCK
 
 log "Preparing CHARX lab at ${CHARX_LAB_HOME}"
 
+if [[ ! -f "${CHARX_WORKSPACE}/work/firmware_v190_bundle/root.ext4" || ! -f "${CHARX_WORKSPACE}/work/firmware_v190_bundle/bootimg.vfat" || ! -f "${CHARX_WORKSPACE}/work/firmware_v190_bundle/manifest.raucm" ]]; then
+  log "Extracted firmware bundle not found; extracting RAUCB first"
+  bash "${SCRIPT_DIR}/extract_raucb.sh"
+fi
+
 for src in \
   "${CHARX_WORKSPACE}/CHARXSEC3XXXSoftwareBundleV190.raucb" \
   "${CHARX_WORKSPACE}/work/firmware_v190_bundle/root.ext4" \

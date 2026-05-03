@@ -9,6 +9,7 @@ work/firmware_v190_bundle/
 work/firmware_v190_rootfs/
 work/firmware_v190_rdump.log
 work/CharxControllerAgent
+work/*.sha256
 
 # Runtime evidence, traces, generated lab outputs
 emulation/charx_v190/evidence/

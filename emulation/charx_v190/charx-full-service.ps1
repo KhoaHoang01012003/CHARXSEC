@@ -4,7 +4,7 @@ param(
     [string]$Action = "status",
 
     [string]$Distro = "Debian",
-    [string]$LabDir = "/home/khoa/charx_labs/charx_v190",
+    [string]$LabDir = "",
     [string]$RunId = "",
     [int]$WaitSeconds = 180,
     [switch]$SkipRoleProbe,
@@ -12,6 +12,11 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+
+if ([string]::IsNullOrWhiteSpace($LabDir)) {
+    $defaultUser = (& wsl.exe -d $Distro -- bash -lc "id -un").Trim()
+    $LabDir = "/home/$defaultUser/charx_labs/charx_v190"
+}
 
 $ScriptPath = Join-Path $PSScriptRoot "scripts\charx_full_service.sh"
 $ResolvedScriptPath = (Resolve-Path $ScriptPath).Path
@@ -33,9 +38,7 @@ if ($NoOpen) {
     $argsList += "--no-open"
 }
 
-$env:CHARX_LAB_DIR = $LabDir
-
-& wsl.exe -d $Distro -u root -- bash "$WslScriptPath" @argsList
+& wsl.exe -d $Distro -u root -- env "CHARX_LAB_DIR=$LabDir" bash "$WslScriptPath" @argsList
 $code = $LASTEXITCODE
 
 if ($Action -eq "open") {

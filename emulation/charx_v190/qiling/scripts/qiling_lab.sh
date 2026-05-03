@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 QILING_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
-LAB_DIR="${CHARX_LAB_DIR:-/home/khoa/charx_labs/charx_v190}"
+LAB_DIR="${CHARX_LAB_DIR:-${HOME}/charx_labs/charx_v190}"
 
 default_venv_dir() {
   if [[ -w "${LAB_DIR}" ]]; then

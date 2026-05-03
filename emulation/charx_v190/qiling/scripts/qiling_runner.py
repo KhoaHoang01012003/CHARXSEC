@@ -20,8 +20,8 @@ from typing import Any, Iterable
 SCRIPT_DIR = Path(__file__).resolve().parent
 QILING_DIR = SCRIPT_DIR.parent
 MATRIX_PATH = QILING_DIR / "service_matrix.json"
-DEFAULT_ROOTFS = Path("/home/khoa/charx_labs/charx_v190/rootfs_ro")
-DEFAULT_QEMU_LAB = Path("/home/khoa/charx_labs/charx_v190")
+DEFAULT_QEMU_LAB = Path(os.environ.get("CHARX_LAB_DIR", str(Path.home() / "charx_labs" / "charx_v190")))
+DEFAULT_ROOTFS = DEFAULT_QEMU_LAB / "rootfs_ro"
 DEFAULT_HOOKS = "files,sockets,syscalls,blocks,memory"
 
 

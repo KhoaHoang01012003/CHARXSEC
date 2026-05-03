@@ -4,7 +4,7 @@ set -u
 ACTION="${1:-status}"
 shift || true
 
-LAB_DIR="${CHARX_LAB_DIR:-/home/khoa/charx_labs/charx_v190}"
+LAB_DIR="${CHARX_LAB_DIR:-${HOME}/charx_labs/charx_v190}"
 WAIT_SECONDS="${CHARX_WAIT_SECONDS:-180}"
 RUN_ID="${CHARX_RUN_ID:-}"
 ROLE_PROBE="${CHARX_ROLE_PROBE:-1}"

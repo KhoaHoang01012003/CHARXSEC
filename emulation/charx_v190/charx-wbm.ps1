@@ -4,13 +4,18 @@ param(
     [string]$Action = "status",
 
     [string]$Distro = "Debian",
-    [string]$LabDir = "/home/khoa/charx_labs/charx_v190",
+    [string]$LabDir = "",
     [string]$RunId = "",
 
     [switch]$CoreOnly
 )
 
 $ErrorActionPreference = "Stop"
+
+if ([string]::IsNullOrWhiteSpace($LabDir)) {
+    $defaultUser = (& wsl.exe -d $Distro -- bash -lc "id -un").Trim()
+    $LabDir = "/home/$defaultUser/charx_labs/charx_v190"
+}
 
 function Invoke-WslRoot {
     param(

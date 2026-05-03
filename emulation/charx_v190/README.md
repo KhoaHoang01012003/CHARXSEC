@@ -13,6 +13,27 @@ Nguyên tắc xuyên suốt: không bịa hành vi. Mọi dữ liệu đưa vào
 | `provenance/` | schema/template provenance cho mock/fixture |
 | `policies/` | policy tạo mock và giới hạn fidelity claim |
 
+## Bootstrap từ clone mới
+
+Repo không commit firmware image/rootfs để tránh phân phối lại firmware vendor và tránh đưa runtime/identity material lên GitHub. Người clone repo cần có bản RAUC bundle hợp lệ riêng, rồi chạy:
+
+```powershell
+.\emulation\charx_v190\bootstrap-from-bundle.cmd -BundlePath C:\path\CHARXSEC3XXXSoftwareBundleV190.raucb
+```
+
+Script sẽ tự:
+
+- extract RAUCB thành `work/firmware_v190_bundle/`,
+- dựng WSL lab tại `/home/<wsl-user>/charx_labs/charx_v190`,
+- tạo lab volume cho `/data`, `/log`, `/identity`,
+- bootstrap Qiling.
+
+Nếu muốn dựng xong và start full service:
+
+```powershell
+.\emulation\charx_v190\bootstrap-from-bundle.cmd -BundlePath C:\path\CHARXSEC3XXXSoftwareBundleV190.raucb -StartFullService
+```
+
 ## Cách dùng nhanh
 
 1. Đọc [TRUST_TIERS.md](/d:/CHARXSEC/emulation/charx_v190/evidence/TRUST_TIERS.md) trước khi dùng dữ liệu.
@@ -36,7 +57,7 @@ Chỉ `Tier 0` và `Tier 1` được dùng làm truth cho behavior claim.
 
 ## Current Implemented Lab
 
-- WSL lab path: `/home/khoa/charx_labs/charx_v190`
+- WSL lab path: `/home/<wsl-user>/charx_labs/charx_v190`
 - First exported run: `20260424T093036Z`
 - Implementation report: [charx_sec_3100_emulation_lab_implementation_report.md](/d:/CHARXSEC/document/charx_sec_3100_emulation_lab_implementation_report.md)
 - Exported status: [wsl_lab_status.md](/d:/CHARXSEC/emulation/charx_v190/evidence/wsl_lab_status.md)
