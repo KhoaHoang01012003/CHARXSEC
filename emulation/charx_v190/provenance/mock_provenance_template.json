@@ -1,0 +1,24 @@
+{
+  "mock_id": "charx-v190-mock-example",
+  "fixture_kind": "other",
+  "mock_scope": "describe the service/interface this mock supports",
+  "source_type": "not_behavior_truth",
+  "evidence_tier": "Tier 4",
+  "confidence": "low",
+  "version_applicability": "Not tied to CHARX SEC-3100 V190 until validated.",
+  "behavior_claim_allowed": false,
+  "source_url": null,
+  "local_evidence_path": null,
+  "generated_from": [
+    "manual placeholder for lab smoke test"
+  ],
+  "redaction_status": "not_applicable",
+  "must_not_claim": [
+    "full_fidelity",
+    "production_behavior",
+    "device_identity_truth"
+  ],
+  "created_on": "2026-04-24",
+  "notes": "Replace this template before using any mock fixture. Do not remove provenance."
+}
+

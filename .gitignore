@@ -1,0 +1,55 @@
+# Large/proprietary firmware artifacts
+*.raucb
+*.ext4
+*.vfat
+*.img
+*.wic
+*.squashfs
+work/firmware_v190_bundle/
+work/firmware_v190_rootfs/
+work/firmware_v190_rdump.log
+work/CharxControllerAgent
+
+# Runtime evidence, traces, generated lab outputs
+emulation/charx_v190/evidence/
+emulation/charx_v190/qiling/evidence/
+emulation/charx_v190/qiling/seeds/default/qemu_evidence/
+emulation/charx_v190/debug_*.txt
+debug_*.txt
+.tmp*
+*.tmp
+*.pcap
+*.pcapng
+*.drcov
+*.trace
+*.jsonl.tmp
+
+# Python/cache/build artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Local editor/OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local secrets and identity material
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.csr
+*.ovpn
+identity/
+*/identity/
+secrets/
+*.secret
+*.token

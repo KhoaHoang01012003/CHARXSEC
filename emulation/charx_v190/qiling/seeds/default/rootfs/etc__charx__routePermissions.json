@@ -1,0 +1,534 @@
+{
+  "/api/[^/]*/web/test-auth-no-login": {
+    "GET": {
+      "role": "guest"
+    },
+    "POST": {
+      "role": "guest"
+    }
+  },
+  "/api/[^/]*/web/test-auth-user": {
+    "GET": {
+      "role": "user"
+    },
+    "POST": {
+      "role": "user"
+    },
+    "PUT": {
+      "role": "manufacturer",
+      "restrictedUsers": {
+        "role": "user",
+        "restrictedTo": [
+          "key1",
+          "key2",
+          "key3"
+        ]
+      }
+    }
+  },
+  "/api/[^/]*/web/test-auth-operator": {
+    "GET": {
+      "role": "operator"
+    },
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/test-auth-manufacturer": {
+    "GET": {
+      "role": "manufacturer"
+    },
+    "POST": {
+      "role": "manufacturer"
+    }
+  },
+  "/api/[^/]*/web/retained-data": {
+    "GET": {
+      "role": "guest"
+    }
+  },
+  "/api/[^/]*/web/restart-app": {
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/stop-app": {
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/start-app": {
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/reboot-all": {
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/firewall": {
+    "GET": {
+      "role": "user"
+    },
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/users-active": {
+    "GET": {
+      "role": "user"
+    },
+    "POST": {
+      "role": "operator"
+    }
+  },
+    "/api/[^/]*/web/linux-user/change-password": {
+    "POST": {
+      "role": "manufacturer"
+    }
+  },
+  "/api/[^/]*/web/linux-user/check-default-password": {
+    "POST": {
+      "role": "manufacturer"
+    }
+  },
+  "/api/[^/]*/web/network": {
+    "GET": {
+      "role": "user"
+    },
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/security": {
+    "GET": {
+      "role": "user"
+    },
+    "POST": {
+      "role": "manufacturer"
+    }
+  },
+  "/api/[^/]*/web/security-config": {
+    "GET": {
+      "role": "user"
+    },
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/OCPPCertificate": {
+    "GET": {
+      "role": "operator"
+    },
+    "POST": {
+      "role": "operator"
+    },
+    "DELETE": {
+      "role": "operator"
+    }
+  },
+    "/api/[^/]*/web/openvpn": {
+    "GET": {
+      "role": "operator"
+    },
+    "POST": {
+      "role": "operator"
+    }
+  },
+    "/api/[^/]*/web/openvpn_credentials": {
+    "GET": {
+      "role": "operator"
+    },
+    "POST": {
+      "role": "operator"
+    },
+    "DELETE": {
+      "role": "operator"
+    }
+  },
+    "/api/[^/]*/web/linux-reset-factory": {
+    "POST": {
+      "role": "manufacturer"
+    }
+  },
+  "/api/[^/]*/web/routing_table": {
+    "GET": {
+      "role": "operator"
+    },
+    "POST": {
+      "role": "operator"
+    }
+  },
+    "/api/[^/]*/web/wifi": {
+    "GET": {
+      "role": "user"
+    },
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/remote_control": {
+    "GET": {
+      "role": "operator"
+    },
+    "POST": {
+      "role": "operator"
+    },
+    "DELETE": {
+      "role": "operator"
+    }
+  },
+    "/api/[^/]*/web/topics_forwarding": {
+    "GET": {
+      "role": "operator"
+    },
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/date-time": {
+    "GET": {
+      "role": "guest"
+    },
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/download/licenses": {
+    "GET": {
+      "role": "user"
+    }
+  },
+  "/api/[^/]*/web/download/logs": {
+    "GET": {
+      "role": "user"
+    }
+  },
+  "/api/[^/]*/web/modem": {
+    "GET": {
+      "role": "user"
+    },
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/modem-ping": {
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/update": {
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/update2-upload": {
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/update2-upload-stream": {
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/update2-install": {
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/system-name": {
+    "GET": {
+      "role": "guest"
+    }
+  },
+  "/api/[^/]*/web/export": {
+    "GET": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/import": {
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/switch-device": {
+    "POST": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/web/login": {
+    "POST": {
+      "role": "guest"
+    }
+  },
+  "/api/[^/]*/web/user/change-password": {
+    "POST": {
+      "role": "user"
+    }
+  },
+  "/api/[^/]*/web/enable-forward": {
+    "POST": {
+      "role": "user"
+    }
+  },
+  "/api/[^/]*/web/linux-user-permissions": {
+    "GET": {
+      "role": "manufacturer"
+    },
+    "POST": {
+      "role": "manufacturer"
+    }
+  },
+  "/api/[^/]*/charging-points": {
+    "GET": {
+      "role": "guest"
+    },
+    "POST": {
+      "role": "manufacturer"
+    }
+  },
+  "/api/[^/]*/charging-points/[^/]*": {
+    "DELETE": {
+      "role": "manufacturer"
+    }
+  },
+  "/api/[^/]*/charging-points/[^/]*/config": {
+    "DELETE": {
+      "role": "manufacturer"
+    },
+    "GET": {
+      "role": "guest"
+    },
+    "PUT": {
+      "role": "manufacturer",
+      "restrictedUsers": {
+        "role": "operator",
+        "restrictedTo": [
+          "charging_point_name",
+          "location",
+          "release_charging_mode",
+          "rfid_reader_device_uid",
+          "rfid_reader_type",
+          "ocpp16_connector_id",
+          "evse_hlc_policy",
+          "evse_id",
+          "evse_charge_service_free",
+          "evse_payment_options",
+          "secc_tls_security_policy",
+          "additional_energy_meter",
+          "connector_phase_rotation"
+        ]
+      }
+    }
+  },
+  "/api/[^/]*/charging-controllers": {
+    "GET": {
+      "role": "user"
+    }
+  },
+  "/api/[^/]*/charging-controllers/.*?/control": {
+    "GET": {
+      "role": "user"
+    },
+    "PUT": {
+      "__comment___": " Eigentlich braucht ein USER nur external_release, charge_enable, force_unlocking",
+      "role": "operator",
+      "restrictedUsers": {
+        "role": "user",
+        "restrictedTo": [
+          "external_release",
+          "charge_enable",
+          "force_unlocking"
+        ]
+      }
+    }
+  },
+  "/api/[^/]*/charging-controllers/[^/]*/data": {
+    "GET": {
+      "role": "user"
+    }
+  },
+  "/api/[^/]*/charging-controllers/[^/]*/event-action-config": {
+    "GET": {
+      "role": "user"
+    },
+    "PUT": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/charging-controllers/[^/]*/function-config": {
+    "GET": {
+      "role": "guest"
+    },
+    "PUT": {
+      "role": "manufacturer"
+    }
+  },
+  "/api/[^/]*/charging-controllers/[^/]*/restart": {
+    "POST": {
+      "role": "manufacturer"
+    }
+  },
+  "/api/[^/]*/charging-controllers/[^/]*/hmi-data": {
+    "GET": {
+      "role": "operator"
+    },
+    "POST": {
+      "role": "operator"
+    },
+    "PUT": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/charging-controllers/[^/]*/hmi-config": {
+    "GET": {
+      "role": "operator"
+    },
+    "POST": {
+      "role": "operator"
+    },
+    "PUT": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/applications/charx-jupicore/config": {
+    "GET": {
+      "role": "guest"
+    },
+    "PUT": {
+      "__comment": "Eigentlich braucht ein operator nur",
+      "__comment2": "ChargingPoints: {RfidChargeGrantTimeoutSec: 50}",
+      "__comment3": "aber das ist verschachtelt und daher aktuell nicht einstellbar.",
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/applications/charx-controller-agent/config": {
+    "GET": {
+      "role": "operator"
+    },
+    "PUT": {
+      "role": "operator"
+    }
+  },
+   "/api/[^/]*/web/public-key": {
+    "GET": {
+      "role": "guest"
+    },
+    "DELETE": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/system-config-manager/config": {
+    "GET": {
+      "role": "operator"
+    },
+    "PUT": {
+      "role": "manufacturer"
+    }
+  },
+  "/api/[^/]*/system-config-manager/remove-file": {
+    "GET": {
+      "role": "operator"
+    },
+    "POST": {
+      "role": "manufacturer"
+    }
+  },
+  "/api/[^/]*/rfid-whitelist": {
+    "GET": {
+      "role": "user"
+    },
+    "POST": {
+      "role": "user"
+    },
+    "PUT": {
+      "role": "user"
+    },
+    "DELETE": {
+      "role": "user"
+    }
+  },
+  "/api/[^/]*/rfid-whitelist/[^/]*": {
+    "GET": {
+      "role": "user"
+    },
+    "POST": {
+      "role": "user"
+    },
+    "PUT": {
+      "role": "user"
+    },
+    "DELETE": {
+      "role": "user"
+    }
+  },
+  "/api/[^/]*/ocpp16/config/info": {
+    "GET": {
+      "role": "user"
+    }
+  },
+  "/api/[^/]*/ocpp16/config/section-info": {
+    "GET": {
+      "role": "operator"
+    },
+    "PUT": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/ocpp16/config/configuration-list": {
+    "GET": {
+      "role": "user"
+    },
+    "PUT": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/ocpp16/config/security-profiles": {
+    "GET": {
+      "role": "user"
+    },
+    "PUT": {
+      "role": "user"
+    }
+  },
+  "/api/[^/]*/ocpp16/diagnostic/ocpp-telegram-protocol": {
+    "GET": {
+      "role": "user"
+    }
+  },
+  "/api/[^/]*/ocpp16/diagnostic/chargingpoint-overview": {
+    "GET": {
+      "role": "user"
+    }
+  },
+  "/api/[^/]*/ocpp16/config/set-section-parameter": {
+    "PUT": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/loadmanagement/load_circuits": {
+    "GET": {
+      "role": "user"
+    },
+    "PUT": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/modbus-client/config": {
+    "PUT": {
+      "role": "operator"
+    }
+  },
+  "/api/[^/]*/modbus-client/devices": {
+    "GET": {
+      "role": "user"
+    }
+  },
+  "/api/[^/]*/coupled-clients": {
+    "GET": {
+      "role": "guest"
+    }
+  }
+}

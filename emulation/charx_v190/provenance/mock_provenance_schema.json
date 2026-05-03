@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "charx-sec-3100-v190-mock-provenance.schema.json",
+  "title": "CHARX SEC-3100 V190 Mock Provenance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "mock_id",
+    "fixture_kind",
+    "mock_scope",
+    "source_type",
+    "evidence_tier",
+    "confidence",
+    "version_applicability",
+    "behavior_claim_allowed",
+    "source_url",
+    "generated_from",
+    "redaction_status",
+    "created_on",
+    "notes"
+  ],
+  "properties": {
+    "mock_id": {
+      "type": "string",
+      "pattern": "^charx-v190-mock-[a-z0-9-]+$"
+    },
+    "fixture_kind": {
+      "type": "string",
+      "enum": [
+        "http_response",
+        "websocket_message",
+        "mqtt_message",
+        "modbus_registers",
+        "openvpn_event",
+        "controller_agent_discovery",
+        "device_node_stub",
+        "filesystem_fixture",
+        "other"
+      ]
+    },
+    "mock_scope": {
+      "type": "string",
+      "description": "Service hoặc interface mà mock phục vụ, ví dụ OCPP backend, MQTT broker, JupiCore fake."
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "observed_from_V190",
+        "observed_runtime",
+        "public_reference",
+        "public_runtime_snippet",
+        "public_emulation_scaffold",
+        "generic_protocol_example",
+        "manual_test_stub",
+        "not_behavior_truth"
+      ]
+    },
+    "evidence_tier": {
+      "type": "string",
+      "enum": [
+        "Tier 0",
+        "Tier 1",
+        "Tier 2",
+        "Tier 3",
+        "Tier 4"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "version_applicability": {
+      "type": "string"
+    },
+    "behavior_claim_allowed": {
+      "type": "boolean",
+      "description": "Chỉ true khi mock dựa trên Tier 0/Tier 1 phù hợp với claim đang đưa ra."
+    },
+    "source_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "local_evidence_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "generated_from": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "redaction_status": {
+      "type": "string",
+      "enum": [
+        "not_applicable",
+        "sanitized",
+        "contains_secret_do_not_use"
+      ]
+    },
+    "must_not_claim": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [
+        "full_fidelity",
+        "production_behavior",
+        "device_identity_truth"
+      ]
+    },
+    "created_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}
+

@@ -1,0 +1,278 @@
+{
+  "created_at": "2026-04-29T08:34:24.432824+00:00",
+  "notes": "Seeds are for harnessing only. They are not device behavior truth.",
+  "qemu_lab": "/home/khoa/charx_labs/charx_v190",
+  "rootfs": "/home/khoa/charx_labs/charx_v190/rootfs_ro",
+  "seeds": [
+    {
+      "behavior_claim_allowed": false,
+      "name": "etc__charx__routePermissions.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/rootfs/etc__charx__routePermissions.json",
+      "provenance": "observed_from_artifact",
+      "sha256": "894ca8a61f52439de8579d0a7a46ab0c6d2001c1a11b13333c93e3a3987a3940",
+      "size": 9621,
+      "source": "/home/khoa/charx_labs/charx_v190/rootfs_ro/etc/charx/routePermissions.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "etc__charx__charx-website.conf",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/rootfs/etc__charx__charx-website.conf",
+      "provenance": "observed_from_artifact",
+      "sha256": "58eafa1a7692cad721e58f080dacd3b9bbab2e953a907809ec958f87c3d0738a",
+      "size": 389,
+      "source": "/home/khoa/charx_labs/charx_v190/rootfs_ro/etc/charx/charx-website.conf"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "etc__charx__charx-system-config-manager.conf",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/rootfs/etc__charx__charx-system-config-manager.conf",
+      "provenance": "observed_from_artifact",
+      "sha256": "9555b4724e73d74e505c890c18f7a2d381704eb6375ee313d6c0d531b93b51e0",
+      "size": 177,
+      "source": "/home/khoa/charx_labs/charx_v190/rootfs_ro/etc/charx/charx-system-config-manager.conf"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "etc__charx__charx-jupicore.conf",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/rootfs/etc__charx__charx-jupicore.conf",
+      "provenance": "observed_from_artifact",
+      "sha256": "54e1c4f404ce4fe90b49f6aea3ca7c28b9b263beda70e9ab8a298d67047159a7",
+      "size": 1242,
+      "source": "/home/khoa/charx_labs/charx_v190/rootfs_ro/etc/charx/charx-jupicore.conf"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "etc__charx__charx-ocpp16-agent.conf",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/rootfs/etc__charx__charx-ocpp16-agent.conf",
+      "provenance": "observed_from_artifact",
+      "sha256": "c5971af63f7fac62302595eeda06183860423d605685e823c6cc29b256189f8e",
+      "size": 776,
+      "source": "/home/khoa/charx_labs/charx_v190/rootfs_ro/etc/charx/charx-ocpp16-agent.conf"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "etc__charx__charx-modbus-agent.conf",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/rootfs/etc__charx__charx-modbus-agent.conf",
+      "provenance": "observed_from_artifact",
+      "sha256": "6d7c9ec81ccd25911f0b06e7d5fa4b9d59d1f6b30646b72d48c9cf81c9eddfd7",
+      "size": 366,
+      "source": "/home/khoa/charx_labs/charx_v190/rootfs_ro/etc/charx/charx-modbus-agent.conf"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "etc__charx__charx-modbus-server.conf",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/rootfs/etc__charx__charx-modbus-server.conf",
+      "provenance": "observed_from_artifact",
+      "sha256": "3e3255ca1f1ff3bee0d52ba41163fa142cb3dea4acc661916057ceac73c3037d",
+      "size": 764,
+      "source": "/home/khoa/charx_labs/charx_v190/rootfs_ro/etc/charx/charx-modbus-server.conf"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "etc__charx__charx-loadmanagement-agent.conf",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/rootfs/etc__charx__charx-loadmanagement-agent.conf",
+      "provenance": "observed_from_artifact",
+      "sha256": "fd3dab063ebac83c544cf4df3946c73f1fff11cf342a905944cc53bdab4f8de5",
+      "size": 458,
+      "source": "/home/khoa/charx_labs/charx_v190/rootfs_ro/etc/charx/charx-loadmanagement-agent.conf"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "etc__charx__charx-loadmanagement-load-circuite.conf",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/rootfs/etc__charx__charx-loadmanagement-load-circuite.conf",
+      "provenance": "observed_from_artifact",
+      "sha256": "0c08624538fd906d9fa57a6274fd1ef1bb6ecca14635b974dfd108635df428b8",
+      "size": 134,
+      "source": "/home/khoa/charx_labs/charx_v190/rootfs_ro/etc/charx/charx-loadmanagement-load-circuite.conf"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "login_user_default.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/samples/login_user_default.json",
+      "provenance": "manual_test_stub",
+      "sha256": "3808c5160f4091e6e1b620c126f82a0d026bc2c7826ada53f2ae6e1c49137830",
+      "size": 61,
+      "source": "generated_safe_sample"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "login_operator_default.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/samples/login_operator_default.json",
+      "provenance": "manual_test_stub",
+      "sha256": "d9bc571e02258fd490642080e16aa9d2439333b9738b8b0032cffcbd5b4cff0a",
+      "size": 69,
+      "source": "generated_safe_sample"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "login_manufacturer_default.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/samples/login_manufacturer_default.json",
+      "provenance": "manual_test_stub",
+      "sha256": "774a24a092cce67e5a054d0ad8bf544e0651491110266fff35ed8a156b3500fe",
+      "size": 77,
+      "source": "generated_safe_sample"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "empty_object.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/samples/empty_object.json",
+      "provenance": "manual_test_stub",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "size": 3,
+      "source": "generated_safe_sample"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "empty_array.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/samples/empty_array.json",
+      "provenance": "manual_test_stub",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "size": 3,
+      "source": "generated_safe_sample"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "full_service_role_probe_stdout.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/full_service_role_probe_stdout.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-full-20260425T010745Z/probes/full_service_role_probe_stdout.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "full_service_role_probe_stdout.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/full_service_role_probe_stdout.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "a4fa06c9e345cc5bd0844107f26efaca85e0000bfbc85b0300cf5b7c3f0748b9",
+      "size": 1094,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-full-20260425T011234Z/probes/full_service_role_probe_stdout.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "wbm_role_probe_summary.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/wbm_role_probe_summary.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "b127b5cb6d924faf48c7acc40ab44bc0a8529cf4d3d73758d9928152793cf454",
+      "size": 1093,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-full-20260425T011234Z/probes/wbm_role_probe_summary.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "wbm_role_token_hashes.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/wbm_role_token_hashes.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "dca2a714dfeb54a19415c3326d86976640eda4746312845b0f2b3cea5f4088fa",
+      "size": 248,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-full-20260425T011234Z/probes/wbm_role_token_hashes.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "full_service_role_probe_stdout.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/full_service_role_probe_stdout.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "8ede880627756708a245deb30ad7c3bb871f9db846249988811f5ccf36e80357",
+      "size": 1094,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-full-20260425T011645Z/probes/full_service_role_probe_stdout.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "wbm_role_probe_summary.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/wbm_role_probe_summary.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "4e6fec5d89008a4438156dd19246229f06d6117288ec025ddf0f2086e717f5cb",
+      "size": 1093,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-full-20260425T011645Z/probes/wbm_role_probe_summary.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "wbm_role_token_hashes.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/wbm_role_token_hashes.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "6c0d853f24ff4443b9886b62bf4ce6c74f50564290261cdfcd9fe701feabaab0",
+      "size": 248,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-full-20260425T011645Z/probes/wbm_role_token_hashes.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "full_service_role_probe_stdout.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/full_service_role_probe_stdout.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "92bff2acc6d67777a36c925731f33f37623e8d2e063c6375181cf0e498e09ab7",
+      "size": 1094,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-full-20260425T012625Z/probes/full_service_role_probe_stdout.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "wbm_role_probe_summary.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/wbm_role_probe_summary.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "d2fa5547c98330bbcdb437df0414916d23ea821fa51dbecbfa4824b4e1bc63ab",
+      "size": 1093,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-full-20260425T012625Z/probes/wbm_role_probe_summary.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "wbm_role_token_hashes.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/wbm_role_token_hashes.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "82a5a942e276c63b4f8784225a11e5bc265510ffc9c73ec3d7fd314d2fc0f8ac",
+      "size": 248,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-full-20260425T012625Z/probes/wbm_role_token_hashes.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "wbm_role_probe_summary.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/wbm_role_probe_summary.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "8e63985be282637aea4fb9b216c3962750a23ae30ac7d2c56a748e4eb206b1ff",
+      "size": 423,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-roles-20260424T145354Z/probes/wbm_role_probe_summary.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "wbm_role_token_hashes.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/wbm_role_token_hashes.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "b303eafb5c1fab5889d6f5995df72a43c63f4f13a9e1bdc5ab43151f580ffa73",
+      "size": 88,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-roles-20260424T145354Z/probes/wbm_role_token_hashes.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "wbm_role_probe_summary.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/wbm_role_probe_summary.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "8db147ae1847b56502ea5987979f9d77c5dffa14c743e6dd79e59c08ceabd5a9",
+      "size": 903,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-roles-20260424T145930Z/probes/wbm_role_probe_summary.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "wbm_role_token_hashes.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/wbm_role_token_hashes.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "08fdf8e1fc5d5bad29e1b91fc8eb1a3ec219f783bfa52862343a98e17da94ae8",
+      "size": 88,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-roles-20260424T145930Z/probes/wbm_role_token_hashes.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "wbm_role_probe_summary.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/wbm_role_probe_summary.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "a4b13f599e85041dca73e9fd514487b5a2ec12adce3544a8d7a470b70ec906ce",
+      "size": 1095,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-roles-20260424T150221Z/probes/wbm_role_probe_summary.json"
+    },
+    {
+      "behavior_claim_allowed": false,
+      "name": "wbm_role_token_hashes.json",
+      "path": "/mnt/d/CHARXSEC/emulation/charx_v190/qiling/seeds/default/qemu_evidence/wbm_role_token_hashes.json",
+      "provenance": "observed_runtime_qemu",
+      "sha256": "f0fb845e3f2a47b05bbad9f74fd33f519f36ae8865493b136670704bd49debdb",
+      "size": 248,
+      "source": "/home/khoa/charx_labs/charx_v190/evidence/wbm-roles-20260424T150221Z/probes/wbm_role_token_hashes.json"
+    }
+  ]
+}

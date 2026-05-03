@@ -1,0 +1,321 @@
+Mục tiêu 2 tuần
+
+Hiểu rõ kiến trúc firmware và hệ sinh thái dịch vụ của CHARX SEC-3100.
+Nắm được các bề mặt tấn công chính từ tài liệu, config, web UI, OCPP, Modbus, MQTT, OpenVPN, USB-C/RNDIS, and system update flow.
+Dựng được quy trình emulation/lab để quan sát hành vi firmware.
+Lập được checklist triage để tìm CVE mới một cách có hệ thống.
+Tuần 1: Nền tảng kỹ thuật và bản đồ firmware
+Ngày 1: Tổng quan hệ thống
+Mục tiêu:
+
+Hiểu sản phẩm là gì, làm nhiệm vụ gì, và nằm ở đâu trong kiến trúc trạm sạc.
+Nắm bộ khung: embedded Linux, client/server mode, network interfaces, charging controller, backend protocols.
+Học từ:
+
+document/product_1139012_page.md
+document/product_1139012_technical_data.md
+document/CHARX_control_modular_AC_-_Cover.html
+Thực hành:
+
+Vẽ sơ đồ 1 trang về thành phần:
+base module
+OCPP backend
+JupiCore
+Modbus client/server
+load management
+controller agent
+web server
+system config manager
+Ghi rõ các port và giao thức đã xác nhận.
+Output:
+
+Một sơ đồ tổng quan kiến trúc.
+Một bảng “service -> purpose -> port -> config file”.
+Ngày 2: Manual structure và chuỗi khởi động
+Mục tiêu:
+
+Hiểu manual được chia thế nào.
+Tìm các phần về startup, wiring, system control, update, log, module switch.
+Học từ:
+
+document/CHARX_help_home.html
+document/startup_section.html
+document/Maintenance_repair_and_disposal.html
+Thực hành:
+
+Tách ra luồng boot/commissioning:
+access via USB-C
+access via Ethernet
+WBM availability delay
+module switch
+update flow
+Ghi chú các điểm “boot-time sensitive”.
+Output:
+
+Timeline khởi động từ power-on đến web UI sẵn sàng.
+Danh sách các điểm có khả năng là bề mặt tấn công.
+Ngày 3: Wiring và hardware interfaces
+Mục tiêu:
+
+Hiểu các kết nối vật lý và vai trò của từng interface.
+Xác định phần nào có thể tái tạo trong lab, phần nào phải mock.
+Học từ:
+
+document/wiring_section.html
+Thực hành:
+
+Lập bảng:
+supply voltage
+Ethernet 1/2
+USB-C
+CAN/backplane
+RFID reader
+energy meter RS-485
+digital inputs/outputs
+CP/PP, contactor, locking actuator
+Ghi ra interface nào phục vụ commissioning, interface nào phục vụ runtime.
+Output:
+
+Hardware interface map.
+Danh sách tín hiệu và dịch vụ liên quan.
+Ngày 4: Web management và application configuration
+Mục tiêu:
+
+Hiểu web-based management điều khiển gì.
+Nắm luồng cấu hình application-side và charging modes.
+Học từ:
+
+document/application_configuration.html
+document/Cybersecurity.html
+Thực hành:
+
+Liệt kê các nhóm cấu hình:
+charging mode
+PWM/CP logic
+EVSE charging config
+OCPP release modes
+whitelist
+load management
+calibration law
+MQTT bridge
+OpenVPN
+Ghi chú nơi nào là UI-only, nơi nào có thể bị backend/API tác động.
+Output:
+
+Bản đồ các nhóm cấu hình theo chức năng.
+Danh sách các route/domain có thể cần theo dõi sau này.
+Ngày 5: Security advisories 2024
+Mục tiêu:
+
+Hiểu các issue lịch sử và pattern của chúng.
+Từ advisory suy ra bề mặt tấn công và control points.
+Học từ:
+
+document/PCSA-2024-00002_SECURITY_ADVISORY.pdf
+document/PCSA-2024-00003_SECURITY_ADVISORY.pdf
+Thực hành:
+
+Phân loại từng CVE theo nhóm:
+boot sequence
+update handling
+default password reset
+file permission issues
+unauthenticated internal service
+OCPP remote port exposure
+Ghi ra “what failed” thay vì “how to exploit”.
+Output:
+
+Advisory matrix: CVE -> root cause class -> affected component -> mitigation.
+Danh sách giả thuyết nghiên cứu cho fuzzing và audit.
+Ngày 6: Security advisory 2025
+Mục tiêu:
+
+Nắm issue mới hơn và cách Phoenix Contact đặt remediation.
+Hiểu xu hướng hardening/closed-network guidance.
+Học từ:
+
+document/PCSA-2025-00015_VDE-2025-074.pdf
+Thực hành:
+
+Đọc kỹ phần affected products, mitigation, remediation.
+So sánh version floor 1.7.4 với version trong lab.
+Ghi chú xem advisory cho thấy control nào có thể bị sai.
+Output:
+
+Trang tóm tắt advisory 2025.
+Danh sách “thay đổi từ 1.6.3 đến 1.7.4” cần kiểm tra trong binary/config.
+Ngày 7: Tổng kết tuần 1
+Mục tiêu:
+
+Gom toàn bộ kiến thức nền thành “threat model thân thiện với nghiên cứu”.
+Thực hành:
+
+Viết 1 trang:
+attack surface map
+trusted boundaries
+privileged services
+update pipeline
+local vs remote management
+Chốt kế hoạch emulation tuần 2.
+Output:
+
+Threat model v1.
+Checklist lab emulation.
+Tuần 2: Phân tích firmware, emulation, và vuln research
+Ngày 8: Firmware unpacking và file system inventory
+Mục tiêu:
+
+Lấy cấu trúc file system từ bundle firmware.
+Nhận diện rootfs, service definitions, init scripts, web assets, configs.
+Thực hành:
+
+Inventory:
+ELF binaries
+shared libraries
+init scripts
+systemd units / SysV scripts
+/etc/charx/*.conf
+nginx config
+route permission JSON
+certs/keys placeholders
+Lập bảng file -> role -> risk.
+Output:
+
+File inventory có phân nhóm.
+Danh sách binary quan trọng cần reverse.
+Ngày 9: Service graph và call-chain reconstruction
+Mục tiêu:
+
+Hiểu ai gọi ai.
+Tạo service dependency graph.
+Thực hành:
+
+Từ config và logs, dựng graph:
+nginx -> website backend
+UI -> JupiCore
+JupiCore -> controller agent / MQTT / OCPP
+modbus agent/server
+load management
+system config manager
+Tìm các hard-coded ports, hostnames, IPC patterns.
+Output:
+
+Service dependency graph.
+Sơ đồ “front-end request to backend action”.
+Ngày 10: Web/API audit
+Mục tiêu:
+
+Tập trung vào web backend và REST surface.
+Tìm các endpoint đáng nghi theo chức năng.
+Thực hành:
+
+Từ charx-api-catalog.json và route permissions:
+group endpoint by domain
+map auth requirements
+identify privileged actions
+Chú ý:
+auth/session handling
+file download/upload
+config import/export
+log download
+update endpoints
+OCPP-related controls
+Output:
+
+API inventory.
+Danh sách endpoint cần review sâu.
+Ngày 11: Emulation planning
+Mục tiêu:
+
+Chọn cách emulate hợp lý, không “đập thẳng” vào runtime thật nếu chưa cần.
+Thực hành:
+
+Chọn chiến lược:
+chroot/emulated rootfs
+QEMU user/system emulation
+containerized service replay
+mocked network peers
+Xác định dependency khó:
+hardware-specific drivers
+CAN
+RNDIS
+modbus devices
+MQTT broker
+OCPP backend
+Lập plan tạo stub/mock cho từng dependency.
+Output:
+
+Emulation architecture plan.
+Danh sách mock services cần viết.
+Ngày 12: Boot and startup instrumentation
+Mục tiêu:
+
+Quan sát các service start order.
+Định vị thời điểm firewall, update, and auth states thay đổi.
+Thực hành:
+
+Instrument:
+boot logs
+service start sequence
+port binds
+file access during startup
+Ghi lại các window thời gian:
+before firewall up
+before login ready
+before update service complete
+Output:
+
+Boot timeline chi tiết.
+Danh sách race-window cần kiểm tra thêm.
+Ngày 13: Update pipeline and config import/export
+Mục tiêu:
+
+Hiểu firmware update, app update, system update, and client propagation.
+Audit package verification and rollback behavior.
+Thực hành:
+
+Từ docs và binary/config:
+identify update entry points
+note signatures/hashes if exposed
+note downgrade policy
+inspect password reset behavior on update
+Tập trung vào defensive questions:
+update authenticity
+package type differentiation
+rollback and recovery paths
+Output:
+
+Update pipeline analysis.
+Checklist for secure update validation.
+Ngày 14: Research wrap-up and CVE candidate triage
+Mục tiêu:
+
+Biến toàn bộ quan sát thành quy trình nghiên cứu lỗ hổng có kỷ luật.
+Thực hành:
+
+Tạo shortlist:
+auth bypass candidates
+file permission issues
+path traversal candidates
+deserialization/config injection candidates
+upload/download surfaces
+startup race windows
+IPC boundary issues
+Mỗi candidate phải có:
+component
+hypothesis
+why it matters
+what evidence to collect
+safe test method
+Output:
+
+Vulnerability research backlog.
+Emulation validation report.
+Next-30-days plan.
+Bộ kỹ năng bạn sẽ nắm sau 2 tuần
+Đọc và phân loại tài liệu Phoenix Contact theo kiến trúc firmware.
+Lập service graph từ config và manual.
+Tách web/UI, backend, and device-control layers.
+Hiểu update flow, boot flow, and remote/local management boundaries.
+Dựng lab/emulation plan cho firmware Linux-based embedded device.
+Xây pipeline triage để phát hiện CVE candidates một cách có hệ thống.

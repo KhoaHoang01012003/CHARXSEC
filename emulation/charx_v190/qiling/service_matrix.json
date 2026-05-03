@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "firmware": "CHARX SEC-3100 V190",
+  "rootfs_default": "/home/khoa/charx_labs/charx_v190/rootfs_ro",
+  "qemu_lab_default": "/home/khoa/charx_labs/charx_v190",
+  "evidence_label": "observed_qiling_target",
+  "services": [
+    {
+      "name": "charx-website",
+      "tier": "A",
+      "binary": "/usr/sbin/CharxWebsite",
+      "init_script": "/etc/init.d/charx-website",
+      "configs": [
+        "/etc/charx/charx-website.conf",
+        "/etc/charx/routePermissions.json",
+        "/etc/charx/website.db"
+      ],
+      "ports": [4999, 5000],
+      "safe_modes": ["static-map", "instrumented-run", "fuzz-harness"],
+      "notes": "WBM backend. First Qiling target because QEMU lab already has the strongest WBM/API fidelity."
+    },
+    {
+      "name": "charx-system-config-manager",
+      "tier": "A",
+      "binary": "/usr/sbin/CharxSystemConfigManager",
+      "init_script": "/etc/init.d/charx-system-config-manager",
+      "configs": ["/etc/charx/charx-system-config-manager.conf"],
+      "ports": [5001, 5002],
+      "safe_modes": ["static-map", "instrumented-run", "fuzz-harness"],
+      "notes": "System configuration manager. Useful for config import/export and IPC/API tracing."
+    },
+    {
+      "name": "charx-jupicore",
+      "tier": "B",
+      "binary": "/usr/sbin/CharxJupiCore",
+      "init_script": "/etc/init.d/charx-jupicore",
+      "configs": ["/etc/charx/charx-jupicore.conf"],
+      "ports": [5555],
+      "safe_modes": ["static-map", "instrumented-run"],
+      "notes": "Central service with ControllerAgent dependency. Runtime failures must be classified, not hidden."
+    },
+    {
+      "name": "charx-ocpp16-agent",
+      "tier": "B",
+      "binary": "/usr/sbin/CharxOcpp16Agent",
+      "init_script": "/etc/init.d/charx-ocpp16-agent",
+      "configs": ["/etc/charx/charx-ocpp16-agent.conf"],
+      "ports": [2106],
+      "safe_modes": ["static-map", "instrumented-run", "fuzz-harness"],
+      "notes": "OCPP 1.6 agent. Backend behavior requires real traces or clearly labeled mocks."
+    },
+    {
+      "name": "charx-modbus-agent",
+      "tier": "B",
+      "binary": "/usr/sbin/CharxModbusAgent",
+      "init_script": "/etc/init.d/charx-modbus-agent",
+      "configs": ["/etc/charx/charx-modbus-agent.conf"],
+      "ports": [9502],
+      "safe_modes": ["static-map", "instrumented-run", "fuzz-harness"],
+      "notes": "Modbus agent. Empty /data/charx-modbus-agent/devices is expected in lab default state."
+    },
+    {
+      "name": "charx-modbus-server",
+      "tier": "B",
+      "binary": "/usr/sbin/CharxModbusServer",
+      "init_script": "/etc/init.d/charx-modbus-server",
+      "configs": ["/etc/charx/charx-modbus-server.conf"],
+      "ports": [502, 9555],
+      "safe_modes": ["static-map", "instrumented-run", "fuzz-harness"],
+      "notes": "Modbus TCP/server side. Register behavior must not be invented without trace or fixture provenance."
+    },
+    {
+      "name": "charx-loadmanagement",
+      "tier": "B",
+      "binary": "/usr/sbin/CharxControllerLoadmanagement",
+      "init_script": "/etc/init.d/charx-loadmanagement",
+      "configs": [
+        "/etc/charx/charx-loadmanagement-agent.conf",
+        "/etc/charx/charx-loadmanagement-load-circuite.conf"
+      ],
+      "ports": [1603],
+      "safe_modes": ["static-map", "instrumented-run"],
+      "notes": "Load management service. Charging point topology remains unknown without runtime/hardware evidence."
+    },
+    {
+      "name": "charx-update-agent",
+      "tier": "B",
+      "binary": "/usr/sbin/CharxUpdateAgent",
+      "init_script": "/etc/init.d/charx-update-agent",
+      "configs": ["/etc/charx/charx-update-agent.conf", "/etc/rauc/system.conf"],
+      "ports": [],
+      "safe_modes": ["static-map", "instrumented-run"],
+      "notes": "Update pipeline target. Qiling runs must be dry-run/instrumentation only and must not install bundles."
+    },
+    {
+      "name": "charx-controller-agent",
+      "tier": "C",
+      "binary": "/usr/sbin/CharxControllerAgent",
+      "init_script": "/etc/init.d/charx-controller-agent",
+      "configs": ["/etc/charx/charx-controller-agent.conf"],
+      "ports": [4444],
+      "safe_modes": ["static-map", "instrumented-run"],
+      "notes": "Experimental only. Depends on CAN, eth1, eth2, TPM/certs, QCA/HomePlug and SECC material."
+    },
+    {
+      "name": "charx-system-monitor",
+      "tier": "C",
+      "binary": "/usr/sbin/CharxSystemMonitor",
+      "init_script": "/etc/init.d/charx-system-monitor",
+      "configs": ["/etc/charx/charx-system-monitor.conf"],
+      "ports": [],
+      "safe_modes": ["static-map", "instrumented-run"],
+      "notes": "Experimental system monitor target. Network and modem observations are not hardware truth."
+    }
+  ]
+}
