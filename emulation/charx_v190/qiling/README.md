@@ -24,6 +24,20 @@ From WSL Debian:
 /mnt/d/CHARXSEC/emulation/charx_v190/qiling/scripts/qiling_lab.sh run --service charx-website --timeout 15 --coverage drcov
 ```
 
+## Hybrid Runtime Model
+
+QEMU/full-service is the baseline runtime truth. Qiling is the instrumentation lane for hooks, coverage, syscall tracing and debugger sessions.
+
+By default, Qiling commands use `--runtime active`, which resolves the active `runs/<runtime_run_id>/rootfs_rw` from the WSL lab session state or `/tmp/charx-full-last-run-id`. If no active run is found, Qiling prints a warning and falls back to `rootfs_ro`. Use `--runtime-run-id <id>` to pin a specific active runtime, and use `--rootfs <path>` only when intentionally analyzing a static artifact. `--run-id` remains the Qiling evidence id.
+
+Examples:
+
+```bash
+qiling_lab.sh run --service charx-website --hooks files,sockets,syscalls,blocks,memory
+qiling_lab.sh run --service charx-website --debugger gdb --debug-port 9999 --timeout 0
+qiling_lab.sh static-map --service charx-website --runtime ro
+```
+
 Evidence is written under:
 
 ```text

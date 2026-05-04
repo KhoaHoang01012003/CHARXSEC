@@ -27,6 +27,9 @@ Usage:
   qiling_lab.sh smoke
 
 Common runner args:
+  --runtime active|ro
+  --lab-dir <path>
+  --runtime-run-id <id>
   --run-id <id>
   --rootfs <path>
   --timeout <seconds>
@@ -34,6 +37,13 @@ Common runner args:
   --debugger none|gdb|idapro
   --debug-port <port>
   --hooks files,sockets,syscalls,blocks,memory
+
+Default behavior:
+  --runtime active resolves active runs/<runtime_run_id>/rootfs_rw from session state or /tmp/charx-full-last-run-id.
+  --runtime-run-id selects a specific QEMU/full-service run rootfs_rw.
+  --run-id is the Qiling evidence id and does not choose rootfs_rw.
+  If no active run exists, the runner warns and falls back to rootfs_ro.
+  --rootfs remains a manual override for static artifacts.
 EOF
 }
 
