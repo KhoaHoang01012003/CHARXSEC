@@ -61,3 +61,13 @@ Chỉ `Tier 0` và `Tier 1` được dùng làm truth cho behavior claim.
 - First exported run: `20260424T093036Z`
 - Implementation report: [charx_sec_3100_emulation_lab_implementation_report.md](/d:/CHARXSEC/document/charx_sec_3100_emulation_lab_implementation_report.md)
 - Exported status: [wsl_lab_status.md](/d:/CHARXSEC/emulation/charx_v190/evidence/wsl_lab_status.md)
+
+## Pentest Workstation
+
+Entrypoint:
+
+```powershell
+.\emulation\charx_v190\charx-pentest.cmd status
+```
+
+Môi trường này bổ sung code browser, debugger, Qiling hooker, Python sandbox và verifier cho QEMU/chroot lab. Xem hướng dẫn: `document/charx_sec_3100_local_pentest_workstation_guide_vi.md`.

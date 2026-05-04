@@ -62,3 +62,13 @@ See the detailed Qiling lab report:
 ```text
 document/charx_sec_3100_qiling_lab_implementation_report.md
 ```
+
+## Local Pentest Workstation
+
+Sau khi bootstrap firmware lab, có thể cài bộ công cụ pentest local:
+
+```powershell
+.\emulation\charx_v190\charx-pentest.cmd bootstrap
+```
+
+Hướng dẫn tiếng Việt: [charx_sec_3100_local_pentest_workstation_guide_vi.md](document/charx_sec_3100_local_pentest_workstation_guide_vi.md)
