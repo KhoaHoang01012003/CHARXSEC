@@ -55,3 +55,11 @@ identity/
 secrets/
 *.secret
 *.token
+
+# CHARX pentest lab generated artifacts
+emulation/charx_v190/pentest/evidence/
+emulation/charx_v190/pentest/runs/
+emulation/charx_v190/pentest/.venv/
+emulation/charx_v190/pentest/codeql-db/
+emulation/charx_v190/pentest/codeql-results/
+emulation/charx_v190/pentest/sandbox-output/
