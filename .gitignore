@@ -12,6 +12,7 @@ work/CharxControllerAgent
 work/*.sha256
 
 # Runtime evidence, traces, generated lab outputs
+.worktrees/
 emulation/charx_v190/evidence/
 emulation/charx_v190/qiling/evidence/
 emulation/charx_v190/qiling/seeds/default/qemu_evidence/
