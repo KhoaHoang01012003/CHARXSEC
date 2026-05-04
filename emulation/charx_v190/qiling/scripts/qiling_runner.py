@@ -16,6 +16,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
+from runtime_resolver import default_lab_dir, resolve_runtime_rootfs
+
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 QILING_DIR = SCRIPT_DIR.parent
@@ -631,12 +633,15 @@ def fuzz_harness(args: argparse.Namespace, svc: dict[str, Any], ev: JsonlEvidenc
     return 0
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="CHARX SEC-3100 V190 Qiling analysis runner.")
     parser.add_argument("--mode", choices=["matrix", "static-map", "instrumented-run", "fuzz-harness"], required=True)
     parser.add_argument("--service", default=None, help="Service name from service_matrix.json, or 'all' for static-map.")
-    parser.add_argument("--rootfs", type=Path, default=DEFAULT_ROOTFS)
-    parser.add_argument("--qemu-lab", type=Path, default=DEFAULT_QEMU_LAB)
+    parser.add_argument("--rootfs", type=Path, default=None)
+    parser.add_argument("--runtime", choices=["active", "ro"], default="active")
+    parser.add_argument("--runtime-run-id", default=None, help="Optional QEMU/full-service run id for selecting runs/<id>/rootfs_rw.")
+    parser.add_argument("--lab-dir", type=Path, default=default_lab_dir())
+    parser.add_argument("--qemu-lab", type=Path, default=None)
     parser.add_argument("--evidence-root", type=Path, default=None, help="Optional writable base directory for evidence. run_id is appended.")
     parser.add_argument("--run-id", default=None)
     parser.add_argument("--timeout", type=int, default=20)
@@ -648,7 +653,23 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", default=None)
     parser.add_argument("--max-seeds", type=int, default=10)
     parser.add_argument("--extra-arg", action="append", default=[])
-    return parser.parse_args()
+    return parser.parse_args(argv)
+
+
+def apply_runtime_selection(args: argparse.Namespace, last_run_file: Path | None = Path("/tmp/charx-full-last-run-id")) -> None:
+    selection = resolve_runtime_rootfs(
+        rootfs=args.rootfs,
+        lab_dir=args.lab_dir,
+        runtime=args.runtime,
+        runtime_run_id=args.runtime_run_id,
+        last_run_file=last_run_file,
+    )
+    for warning in selection.warning_list():
+        print(f"warning: {warning}", file=sys.stderr)
+
+    args.rootfs = selection.rootfs
+    args.qemu_lab = (args.qemu_lab or selection.lab_dir).expanduser().resolve()
+    args.runtime_metadata = selection.metadata()
 
 
 def main() -> int:
@@ -663,9 +684,8 @@ def main() -> int:
     if args.service != "all" and args.service not in services:
         raise SystemExit(f"Unknown service {args.service!r}. Use --mode matrix to list services.")
 
+    apply_runtime_selection(args)
     args.run_id = args.run_id or utc_run_id()
-    args.rootfs = args.rootfs.resolve()
-    args.qemu_lab = args.qemu_lab.resolve()
 
     selected = list(services.values()) if args.service == "all" else [services[args.service]]
     exit_code = 0
@@ -678,6 +698,7 @@ def main() -> int:
             firmware=matrix.get("firmware"),
             qiling_dir=str(QILING_DIR),
             rootfs=str(args.rootfs),
+            runtime=args.runtime_metadata,
             service_tier=svc.get("tier"),
             service_binary=svc.get("binary"),
             argv=sys.argv,
