@@ -63,3 +63,4 @@ emulation/charx_v190/pentest/.venv/
 emulation/charx_v190/pentest/codeql-db/
 emulation/charx_v190/pentest/codeql-results/
 emulation/charx_v190/pentest/sandbox-output/
+document/evidence/
