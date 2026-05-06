@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-05-07T00:00:00Z",
+  "generated_by": "firmware-intake-extracting test-fixture",
+  "source_inputs": [{"path": "fixtures/router.bin", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}],
+  "warnings": [],
+  "errors": [],
+  "artifact_type": "firmware_manifest",
+  "product_hint": "Generic Router",
+  "firmware_files": [
+    {
+      "path": "fixtures/router.bin",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "size_bytes": 128
+    }
+  ],
+  "rootfs_candidates": [
+    {
+      "path": "extract/rootfs",
+      "filesystem_type": "squashfs",
+      "confidence": "medium"
+    }
+  ]
+}

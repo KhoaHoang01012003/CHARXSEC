@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-05-07T00:00:00Z",
+  "generated_by": "firmware-service-emulating test-fixture",
+  "source_inputs": [{"artifact": "runtime_profile.json"}],
+  "warnings": [],
+  "errors": [],
+  "artifact_type": "service_readiness",
+  "ready_for_pentest": true,
+  "services": [
+    {
+      "service_name": "web",
+      "classification": "required",
+      "expected_process_patterns": ["webd"],
+      "expected_ports": [80],
+      "expected_logs": ["/var/log/web.log"],
+      "smoke_tests": [{"name": "api", "method": "GET", "url": "http://127.0.0.1/api/status", "expected_status": 200}],
+      "observed_processes": [{"pid": 123, "command": "webd"}],
+      "observed_ports": [80],
+      "observed_log_signals": [{"level": "ERROR", "message": "Traceback"}],
+      "smoke_result": [{"name": "api", "status": 500}],
+      "readiness": "ready"
+    }
+  ]
+}
