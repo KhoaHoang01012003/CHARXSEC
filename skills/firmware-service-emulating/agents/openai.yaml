@@ -1,0 +1,4 @@
+interface:
+  display_name: "Firmware Service Emulating"
+  short_description: "Emulate firmware services with readiness gates"
+  default_prompt: "Use firmware service emulating to choose qemu-user, qemu-system, native-container, device-ssh, or static-only runtime and enforce service/API readiness before pentesting."
