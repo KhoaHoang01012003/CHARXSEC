@@ -1,0 +1,4 @@
+interface:
+  display_name: "Firmware Rootfs Profiling"
+  short_description: "Profile rootfs services and attack surface"
+  default_prompt: "Use firmware rootfs profiling to map architecture, init system, services, web roots, routes, configs, binaries, and attack-surface ranking from an extracted rootfs."
