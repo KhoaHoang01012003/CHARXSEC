@@ -1,0 +1,4 @@
+interface:
+  display_name: "Firmware Model Research"
+  short_description: "Research firmware model behavior"
+  default_prompt: "Use firmware model research to collect sourced product, model, firmware version, advisory, and behavior claims before emulation."
