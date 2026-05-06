@@ -1,0 +1,4 @@
+interface:
+  display_name: "Firmware Runtime Hooking"
+  short_description: "Capture live firmware behavior"
+  default_prompt: "Use firmware runtime hooking to plan and capture strace, logs, tcpdump, Frida, bpftrace, or separate Qiling evidence while an operator or LLM workload interacts with firmware runtime services."
