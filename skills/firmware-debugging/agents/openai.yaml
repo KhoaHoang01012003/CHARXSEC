@@ -1,0 +1,4 @@
+interface:
+  display_name: "Firmware Debugging"
+  short_description: "Attach firmware debuggers safely"
+  default_prompt: "Use firmware debugging to choose host QEMU attach, guest gdbstub, gdbserver, qemu-system gdbstub, or Qiling debugger mode with explicit intrusive-action and evidence gates."
