@@ -1,0 +1,4 @@
+interface:
+  display_name: "Firmware Intake Extracting"
+  short_description: "Safely extract firmware artifacts"
+  default_prompt: "Use firmware intake extracting to identify, hash, and extract a local firmware file into a rootfs candidate without modifying the original."
