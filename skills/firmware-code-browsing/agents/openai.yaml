@@ -1,0 +1,4 @@
+interface:
+  display_name: "Firmware Code Browsing"
+  short_description: "Browse firmware code and binaries"
+  default_prompt: "Use firmware code browsing to build compact LLM context from rootfs services, supported source languages, configs, and binary metadata without claiming runtime behavior."
