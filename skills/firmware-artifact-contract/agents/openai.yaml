@@ -1,0 +1,4 @@
+interface:
+  display_name: "Firmware Artifact Contract"
+  short_description: "Validate firmware pentest artifacts"
+  default_prompt: "Use the firmware artifact contract to validate Wave 1 firmware pentest evidence files."
