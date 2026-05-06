@@ -24,6 +24,14 @@ Allowed `artifact_sensitivity` values are `public_reference`, `local_metadata`, 
 
 Do not print, commit, upload, or summarize `secret_material` or raw `firmware_proprietary` data. Summaries for `local_sensitive` artifacts must be redacted first.
 
+## Wave 2 Runtime Truth Rules
+
+Static code browser output, Qiling-only output, sandbox output, mocked behavior, and planned actions must set `behavior_claim_allowed=false`.
+
+Only `observed_runtime_qemu`, `observed_runtime_live_hook`, `observed_runtime_live_debugger`, and `verified` observations may set `behavior_claim_allowed=true`, and only when the source artifact proves the target workload was observed.
+
+Raw traces, packet captures, debugger transcripts, browser exports, and proprietary snippets must stay in ignored local evidence directories. LLM-facing summaries must be compact, redacted, and source-attributed.
+
 ## Validation
 
 Run the bundled validator before trusting Wave 1 artifacts:
