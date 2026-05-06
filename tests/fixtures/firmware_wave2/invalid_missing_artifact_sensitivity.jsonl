@@ -1,0 +1,1 @@
+{"schema_version":"1.0.0","timestamp_utc":"2026-05-07T00:03:00Z","component":"web","event_type":"debugger_attach","label":"observed_runtime_live_debugger","behavior_claim_allowed":true,"source_artifact":"gdb_transcript.txt","reproduction_command":"gdb-multiarch -x gdb_commands.gdb","risk_notes":[]}

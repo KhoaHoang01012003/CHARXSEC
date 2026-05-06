@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-05-07T00:00:00Z",
+  "generated_by": "firmware-code-browsing test-fixture",
+  "source_inputs": [{"artifact": "rootfs_profile.json"}, {"artifact": "service_graph.json"}],
+  "warnings": [],
+  "errors": [],
+  "artifact_type": "skill_context",
+  "scope": "web_api",
+  "target_components": ["webd"],
+  "entries": [
+    {
+      "component": "webd",
+      "artifact": "rootfs/bin/webd",
+      "summary": "ELF service with HTTP route strings",
+      "behavior_claim_allowed": false,
+      "artifact_sensitivity": "local_metadata"
+    }
+  ]
+}

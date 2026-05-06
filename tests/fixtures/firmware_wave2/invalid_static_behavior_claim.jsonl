@@ -1,0 +1,1 @@
+{"schema_version":"1.0.0","timestamp_utc":"2026-05-07T00:02:00Z","component":"webd","event_type":"static_route_map","label":"observed_static_artifact","behavior_claim_allowed":true,"source_artifact":"skill_context.json","reproduction_command":"python tools/list_routes.py","risk_notes":["static only"],"artifact_sensitivity":"local_metadata"}
