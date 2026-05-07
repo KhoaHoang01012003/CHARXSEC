@@ -32,6 +32,14 @@ Only `observed_runtime_qemu`, `observed_runtime_live_hook`, `observed_runtime_li
 
 Raw traces, packet captures, debugger transcripts, browser exports, and proprietary snippets must stay in ignored local evidence directories. LLM-facing summaries must be compact, redacted, and source-attributed.
 
+## Wave 3 Verification Rules
+
+Sandbox output must use `sandbox_generated` evidence and `behavior_claim_allowed=false` unless a separate live runtime artifact verifies it.
+
+Finding records may use `CVE candidate` language only after reproduction status, impact, affected version, duplicate checks, and verifier provenance are recorded.
+
+Do not claim an official CVE assignment unless the CVE ID exists in an official or vendor source. Static suspicion, Qiling-only behavior, sandbox-only output, or public writeups alone must produce `unverified`, `duplicate_known`, or `blocked`, not `verified`.
+
 ## Validation
 
 Run the bundled validator before trusting Wave 1 artifacts:

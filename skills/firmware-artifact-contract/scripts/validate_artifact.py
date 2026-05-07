@@ -18,6 +18,16 @@ ARTIFACT_REQUIRED = {
     "reverse_queue": ["artifact_type", "queue"],
     "hook_plan": ["artifact_type", "target_service", "capture_lanes", "workload"],
     "debug_plan": ["artifact_type", "target_process", "attach_mode", "intrusive_actions"],
+    "probe_plan": ["artifact_type", "target", "sandbox_network", "payloads", "safety_constraints"],
+    "verifier_report": [
+        "artifact_type",
+        "target_finding_id",
+        "verdict",
+        "reproduction_status",
+        "evidence_labels",
+        "duplicate_checks",
+        "disclosure_status",
+    ],
     "observation_record": [
         "schema_version",
         "timestamp_utc",
@@ -27,6 +37,20 @@ ARTIFACT_REQUIRED = {
         "behavior_claim_allowed",
         "source_artifact",
         "risk_notes",
+        "artifact_sensitivity",
+    ],
+    "finding_record": [
+        "schema_version",
+        "timestamp_utc",
+        "finding_id",
+        "title",
+        "component",
+        "hypothesis",
+        "severity_hypothesis",
+        "evidence",
+        "reproduction_status",
+        "cve_claim_allowed",
+        "verifier_report",
         "artifact_sensitivity",
     ],
 }
@@ -69,6 +93,12 @@ NON_RUNTIME_TRUTH_LABELS = {
     "unverified",
     "blocked",
 }
+LIVE_OR_VERIFIED_LABELS = {
+    "observed_runtime_qemu",
+    "observed_runtime_live_hook",
+    "observed_runtime_live_debugger",
+    "verified",
+}
 DEBUG_ATTACH_MODES = {
     "host-qemu-attach",
     "guest-gdbstub",
@@ -76,6 +106,16 @@ DEBUG_ATTACH_MODES = {
     "gdbserver",
     "qiling-debugger",
     "static-blocked",
+}
+SANDBOX_NETWORK_MODES = {"disabled", "explicitly_enabled", "blocked"}
+FINDING_REPRODUCTION_STATUSES = {"hypothesis", "reproduced", "not_reproduced", "blocked", "duplicate_known_issue"}
+VERIFIER_VERDICTS = {"verified", "unverified", "duplicate_known", "blocked", "rejected"}
+DISCLOSURE_STATUSES = {
+    "internal_triage",
+    "vendor_report_planned",
+    "vendor_reported",
+    "public_reference_only",
+    "not_for_disclosure",
 }
 
 
@@ -121,6 +161,27 @@ def validate_observation_record(data: dict, prefix: str = "record") -> list[str]
         errors.append(f"{prefix}.behavior_claim_allowed must be false for {data.get('label')}")
     if not isinstance(data.get("risk_notes", []), list):
         errors.append(f"{prefix}.risk_notes must be a list")
+    return errors
+
+
+def validate_finding_record(data: dict, prefix: str = "record") -> list[str]:
+    errors: list[str] = []
+    errors.extend(f"{prefix}.{field} is required" for field in require_fields(data, ARTIFACT_REQUIRED["finding_record"]))
+    if data.get("schema_version") != "1.0.0":
+        errors.append(f"{prefix}.schema_version must be 1.0.0")
+    if data.get("artifact_sensitivity") not in SENSITIVITY_VALUES:
+        errors.append(f"{prefix}.artifact_sensitivity has invalid value")
+    if data.get("reproduction_status") not in FINDING_REPRODUCTION_STATUSES:
+        errors.append(f"{prefix}.reproduction_status has invalid value")
+    if not isinstance(data.get("evidence", []), list):
+        errors.append(f"{prefix}.evidence must be a list")
+    if data.get("cve_claim_allowed") is True:
+        if data.get("reproduction_status") != "reproduced":
+            errors.append(f"{prefix}.cve_claim_allowed requires reproduced reproduction_status")
+        if not data.get("verifier_report"):
+            errors.append(f"{prefix}.verifier_report is required when cve_claim_allowed is true")
+    if data.get("cve_id") and not data.get("verifier_report"):
+        errors.append(f"{prefix}.verifier_report is required when cve_id is present")
     return errors
 
 
@@ -176,6 +237,28 @@ def validate_common_artifact(data: dict, artifact_type: str) -> list[str]:
     return errors
 
 
+def validate_verifier_report(data: dict) -> list[str]:
+    errors: list[str] = []
+    if data.get("verdict") not in VERIFIER_VERDICTS:
+        errors.append("verdict has invalid value")
+    if data.get("reproduction_status") not in FINDING_REPRODUCTION_STATUSES:
+        errors.append("reproduction_status has invalid value")
+    if data.get("disclosure_status") not in DISCLOSURE_STATUSES:
+        errors.append("disclosure_status has invalid value")
+    evidence_labels = data.get("evidence_labels", [])
+    if not isinstance(evidence_labels, list):
+        errors.append("evidence_labels must be a list")
+        evidence_labels = []
+    if not isinstance(data.get("duplicate_checks", []), list):
+        errors.append("duplicate_checks must be a list")
+    if data.get("verdict") == "verified":
+        if data.get("reproduction_status") != "reproduced":
+            errors.append("verified verdict requires reproduced reproduction_status")
+        if not LIVE_OR_VERIFIED_LABELS.intersection(set(evidence_labels)):
+            errors.append("verified verdict requires live runtime or verified evidence")
+    return errors
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("artifact", type=Path)
@@ -191,16 +274,19 @@ def main(argv: list[str] | None = None) -> int:
         return fail(f"schema file not found: {schema_file}")
 
     if args.jsonl:
-        if args.artifact_type != "observation_record":
-            return fail("--jsonl is only supported for observation_record")
+        if args.artifact_type not in {"observation_record", "finding_record"}:
+            return fail("--jsonl is only supported for observation_record and finding_record")
         records, errors = load_jsonl(args.artifact)
         for index, record in enumerate(records):
-            errors.extend(validate_observation_record(record, prefix=f"records[{index}]"))
+            if args.artifact_type == "observation_record":
+                errors.extend(validate_observation_record(record, prefix=f"records[{index}]"))
+            else:
+                errors.extend(validate_finding_record(record, prefix=f"records[{index}]"))
         if errors:
             for error in errors:
                 print(error, file=sys.stderr)
             return 1
-        print(f"valid observation_record: {args.artifact}")
+        print(f"valid {args.artifact_type}: {args.artifact}")
         return 0
 
     try:
@@ -210,6 +296,8 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.artifact_type == "observation_record":
         errors = validate_observation_record(data)
+    elif args.artifact_type == "finding_record":
+        errors = validate_finding_record(data)
     else:
         errors = validate_common_artifact(data, args.artifact_type)
 
@@ -222,6 +310,10 @@ def main(argv: list[str] | None = None) -> int:
         errors.extend(validate_service_readiness(data))
     if args.artifact_type == "debug_plan" and data.get("attach_mode") not in DEBUG_ATTACH_MODES:
         errors.append("attach_mode has invalid value")
+    if args.artifact_type == "probe_plan" and data.get("sandbox_network") not in SANDBOX_NETWORK_MODES:
+        errors.append("sandbox_network has invalid value")
+    if args.artifact_type == "verifier_report":
+        errors.extend(validate_verifier_report(data))
 
     if errors:
         for error in errors:
