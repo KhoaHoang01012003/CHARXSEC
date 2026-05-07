@@ -392,6 +392,8 @@ Implementation should happen as a new wave after the current Wave 1-3 skill suit
 
 This wave should not install the skills into `$CODEX_HOME/skills`. Installation remains a separate operator action.
 
+The implementation adds `firmware-memory-layer`, deterministic helper scripts, a repo-local `firmware-agent-workspace`, and compact integration sections in existing phase skills. It does not install skills into `$CODEX_HOME/skills` and does not promote any product-specific operational memory by default.
+
 ## Self-Review
 
 Template scan: no scaffold requirements are left open.
