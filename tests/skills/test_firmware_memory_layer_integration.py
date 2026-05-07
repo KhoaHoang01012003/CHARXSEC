@@ -17,6 +17,14 @@ PHASE_SKILLS = [
 
 
 class FirmwareMemoryLayerIntegrationTests(unittest.TestCase):
+    def test_memory_layer_skill_is_scannable(self):
+        text = (SKILLS / "firmware-memory-layer" / "SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("## When to Use", text)
+        self.assertIn("## Quick Reference", text)
+        self.assertIn("suggest_memory.py", text)
+        self.assertIn("validate_memory.py", text)
+        self.assertIn("promote_memory.py", text)
+
     def test_phase_skills_reference_memory_layer(self):
         for skill in PHASE_SKILLS:
             text = (SKILLS / skill / "SKILL.md").read_text(encoding="utf-8")

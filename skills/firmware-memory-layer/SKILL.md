@@ -7,7 +7,11 @@ description: Use when Codex needs to suggest, read, draft, validate, or promote 
 
 ## Overview
 
-Use this supporting skill to reuse durable firmware pentest lessons without loading large memory folders or trusting unreviewed notes. Memory is advisory: current artifacts, live runtime evidence, and verifier gates always win.
+Reuse durable firmware pentest lessons without loading large memory folders or trusting unreviewed notes. Memory is advisory: current artifacts, live runtime evidence, and verifier gates always win.
+
+## When to Use
+
+Use after at least one current artifact exists and a phase may benefit from prior product, service, or tool lessons. Do not use during initial intake or to assert live behavior without current evidence.
 
 ## Required Superpowers
 
@@ -18,7 +22,7 @@ Use this supporting skill to reuse durable firmware pentest lessons without load
 ## Inputs
 
 - `firmware-agent-workspace`.
-- Firmware artifacts such as `model_research.json`, `rootfs_profile.json`, `service_graph.json`, `runtime_profile.json`, `observations.jsonl`, and `verifier_report.json`.
+- Firmware artifacts: `model_research.json`, `rootfs_profile.json`, `service_graph.json`, `runtime_profile.json`, `observations.jsonl`, and `verifier_report.json`.
 - Optional current hypothesis, target service, runtime profile, or blocker.
 
 ## Workflow
@@ -30,6 +34,14 @@ Use this supporting skill to reuse durable firmware pentest lessons without load
 5. Validate drafts with `validate_memory.py`.
 6. Promote drafts with `promote_memory.py` only after validation passes.
 7. Re-run suggestion after promotion when the current task benefits from the new memory.
+
+## Quick Reference
+
+| Need | Action |
+| --- | --- |
+| Find relevant memory | Run `suggest_memory.py`; read only `read_now`. |
+| Record a reusable lesson | Write a draft under `firmware-agent-workspace/drafts/`; run `validate_memory.py`. |
+| Trust and reuse a draft | Promote with `promote_memory.py`; keep raw evidence out of memory. |
 
 ## Memory Types
 
@@ -50,7 +62,7 @@ Memory work passes only when helper scripts exit 0, generated JSON is valid, pro
 
 ## Safety
 
-Operate only on firmware and runtimes the user is authorized to test. Keep destructive probes disabled by default; record runtime modifications; prefer local evidence and redacted summaries; use exact dates and versions in vulnerability reports; do not install tools without explicit user approval.
+Operate only on firmware and runtimes the user is authorized to test. Keep destructive probes disabled by default; record runtime modifications; prefer redacted summaries; use exact dates and versions in reports; do not install tools without explicit user approval.
 
 Do not commit firmware, rootfs dumps, private configs, credentials, cookies, tokens, private keys, certificates, raw traces, packet captures, debugger transcripts, memory dumps, identity material, or exploit payloads for unauthorized targets.
 

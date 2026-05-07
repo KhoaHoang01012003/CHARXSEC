@@ -62,7 +62,7 @@ Out of scope:
 - Create: `tests/fixtures/firmware_memory_layer/invalid_missing_evidence_memory.md`
 - Create: `tests/fixtures/firmware_memory_layer/invalid_behavior_claim_memory.md`
 
-- [ ] **Step 1: Create the failing validation tests**
+- [x] **Step 1: Create the failing validation tests**
 
 Create `tests/skills/test_firmware_memory_layer_validation.py`:
 
@@ -307,7 +307,7 @@ This memory should fail validation.
 No sensitive material is included.
 ```
 
-- [ ] **Step 2: Create small artifact fixtures used by memory evidence**
+- [x] **Step 2: Create small artifact fixtures used by memory evidence**
 
 Create `tests/fixtures/firmware_memory_layer/model_research.json`:
 
@@ -327,7 +327,7 @@ Create `tests/fixtures/firmware_memory_layer/rootfs_profile.json`:
 {"schema_version":"1.0.0","generated_at":"2026-05-07T00:00:00Z","generated_by":"test","source_inputs":[],"warnings":[],"errors":[],"artifact_type":"rootfs_profile","architecture":"arm","service_candidates":[{"name":"web","path":"usr/bin/webd"}]}
 ```
 
-- [ ] **Step 3: Run validation tests and verify they fail**
+- [x] **Step 3: Run validation tests and verify they fail**
 
 Run:
 
@@ -337,7 +337,7 @@ python -m unittest tests.skills.test_firmware_memory_layer_validation -v
 
 Expected: FAIL because `skills/firmware-memory-layer/scripts/validate_memory.py` does not exist.
 
-- [ ] **Step 4: Commit failing validation tests**
+- [x] **Step 4: Commit failing validation tests**
 
 Run:
 
@@ -360,7 +360,7 @@ Expected: commit succeeds.
 - Create: `skills/firmware-memory-layer/references/schemas/memory_draft.schema.json`
 - Create: `skills/firmware-memory-layer/scripts/validate_memory.py`
 
-- [ ] **Step 1: Initialize the supporting skill**
+- [x] **Step 1: Initialize the supporting skill**
 
 Run:
 
@@ -370,7 +370,7 @@ python C:\Users\Admin\.codex\skills\.system\skill-creator\scripts\init_skill.py 
 
 Expected: creates `skills/firmware-memory-layer`.
 
-- [ ] **Step 2: Replace `SKILL.md`**
+- [x] **Step 2: Replace `SKILL.md`**
 
 Replace `skills/firmware-memory-layer/SKILL.md` with:
 
@@ -440,7 +440,7 @@ Do not commit firmware, rootfs dumps, private configs, credentials, cookies, tok
 - Letting stale memory override current runtime evidence.
 ```
 
-- [ ] **Step 3: Add memory format reference**
+- [x] **Step 3: Add memory format reference**
 
 Create `skills/firmware-memory-layer/references/memory_file_format.md`:
 
@@ -488,7 +488,7 @@ Create `skills/firmware-memory-layer/references/memory_workflow.md`:
 Drafts are not trusted memory. Promotion updates `memory-index.json`.
 ```
 
-- [ ] **Step 4: Add schema documentation files**
+- [x] **Step 4: Add schema documentation files**
 
 Create `skills/firmware-memory-layer/references/schemas/memory_index.schema.json`:
 
@@ -545,7 +545,7 @@ Create `skills/firmware-memory-layer/references/schemas/memory_draft.schema.json
 }
 ```
 
-- [ ] **Step 5: Implement validator**
+- [x] **Step 5: Implement validator**
 
 Replace `skills/firmware-memory-layer/scripts/validate_memory.py` with:
 
@@ -725,7 +725,7 @@ if __name__ == "__main__":
     raise SystemExit(main())
 ```
 
-- [ ] **Step 6: Run validation tests**
+- [x] **Step 6: Run validation tests**
 
 Run:
 
@@ -735,7 +735,7 @@ python -m unittest tests.skills.test_firmware_memory_layer_validation -v
 
 Expected: PASS all four validation tests.
 
-- [ ] **Step 7: Validate the new skill**
+- [x] **Step 7: Validate the new skill**
 
 Run:
 
@@ -745,7 +745,7 @@ python C:\Users\Admin\.codex\skills\.system\skill-creator\scripts\quick_validate
 
 Expected: exits 0 and prints `Skill is valid!`.
 
-- [ ] **Step 8: Commit validator implementation**
+- [x] **Step 8: Commit validator implementation**
 
 Run:
 
@@ -766,7 +766,7 @@ Expected: commit succeeds.
 - Create: `tests/fixtures/firmware_memory_layer/suggestion_runtime_profile.json`
 - Create: `skills/firmware-memory-layer/scripts/suggest_memory.py`
 
-- [ ] **Step 1: Create failing suggestion tests**
+- [x] **Step 1: Create failing suggestion tests**
 
 Create `tests/skills/test_firmware_memory_layer_suggestion.py`:
 
@@ -824,7 +824,7 @@ if __name__ == "__main__":
     unittest.main()
 ```
 
-- [ ] **Step 2: Create suggestion fixtures**
+- [x] **Step 2: Create suggestion fixtures**
 
 Create `tests/fixtures/firmware_memory_layer/suggestion_workspace/memory-index.json`:
 
@@ -916,7 +916,7 @@ Create `tests/fixtures/firmware_memory_layer/suggestion_runtime_profile.json`:
 }
 ```
 
-- [ ] **Step 3: Run suggestion tests and verify they fail**
+- [x] **Step 3: Run suggestion tests and verify they fail**
 
 Run:
 
@@ -926,7 +926,7 @@ python -m unittest tests.skills.test_firmware_memory_layer_suggestion -v
 
 Expected: FAIL because `suggest_memory.py` does not exist.
 
-- [ ] **Step 4: Implement suggestion helper**
+- [x] **Step 4: Implement suggestion helper**
 
 Create `skills/firmware-memory-layer/scripts/suggest_memory.py`:
 
@@ -1060,7 +1060,7 @@ if __name__ == "__main__":
     raise SystemExit(main())
 ```
 
-- [ ] **Step 5: Run suggestion tests**
+- [x] **Step 5: Run suggestion tests**
 
 Run:
 
@@ -1070,7 +1070,7 @@ python -m unittest tests.skills.test_firmware_memory_layer_suggestion -v
 
 Expected: PASS.
 
-- [ ] **Step 6: Commit suggestion helper**
+- [x] **Step 6: Commit suggestion helper**
 
 Run:
 
@@ -1088,7 +1088,7 @@ Expected: commit succeeds.
 - Create: `tests/fixtures/firmware_memory_layer/promotion_workspace/drafts/qemu-user-common-blockers.md`
 - Modify: `skills/firmware-memory-layer/scripts/promote_memory.py`
 
-- [ ] **Step 1: Create failing promotion tests**
+- [x] **Step 1: Create failing promotion tests**
 
 Create `tests/skills/test_firmware_memory_layer_promotion.py`:
 
@@ -1139,7 +1139,7 @@ if __name__ == "__main__":
     unittest.main()
 ```
 
-- [ ] **Step 2: Create promotion workspace fixture**
+- [x] **Step 2: Create promotion workspace fixture**
 
 Create `tests/fixtures/firmware_memory_layer/promotion_workspace/memory-index.json`:
 
@@ -1209,7 +1209,7 @@ Create `tests/fixtures/firmware_memory_layer/runtime_profile.json`:
 {"schema_version":"1.0.0","generated_at":"2026-05-07T00:00:00Z","generated_by":"test","source_inputs":[],"warnings":[],"errors":[],"artifact_type":"runtime_profile","runtime_profile":"qemu-user","rootfs_mode":"rootfs_rw"}
 ```
 
-- [ ] **Step 3: Run promotion tests and verify they fail**
+- [x] **Step 3: Run promotion tests and verify they fail**
 
 Run:
 
@@ -1219,7 +1219,7 @@ python -m unittest tests.skills.test_firmware_memory_layer_promotion -v
 
 Expected: FAIL because `promote_memory.py` does not exist.
 
-- [ ] **Step 4: Implement promotion helper**
+- [x] **Step 4: Implement promotion helper**
 
 Create `skills/firmware-memory-layer/scripts/promote_memory.py`:
 
@@ -1328,7 +1328,7 @@ if __name__ == "__main__":
     raise SystemExit(main())
 ```
 
-- [ ] **Step 5: Run promotion tests**
+- [x] **Step 5: Run promotion tests**
 
 Run:
 
@@ -1338,7 +1338,7 @@ python -m unittest tests.skills.test_firmware_memory_layer_promotion -v
 
 Expected: PASS.
 
-- [ ] **Step 6: Commit promotion helper**
+- [x] **Step 6: Commit promotion helper**
 
 Run:
 
@@ -1360,7 +1360,7 @@ Expected: commit succeeds.
 - Create: `firmware-agent-workspace/drafts/.gitkeep`
 - Create: `tests/skills/test_firmware_memory_layer_workspace.py`
 
-- [ ] **Step 1: Create failing workspace tests**
+- [x] **Step 1: Create failing workspace tests**
 
 Create `tests/skills/test_firmware_memory_layer_workspace.py`:
 
@@ -1397,7 +1397,7 @@ if __name__ == "__main__":
     unittest.main()
 ```
 
-- [ ] **Step 2: Run workspace tests and verify they fail**
+- [x] **Step 2: Run workspace tests and verify they fail**
 
 Run:
 
@@ -1407,7 +1407,7 @@ python -m unittest tests.skills.test_firmware_memory_layer_workspace -v
 
 Expected: FAIL because `firmware-agent-workspace` does not exist.
 
-- [ ] **Step 3: Create workspace skeleton**
+- [x] **Step 3: Create workspace skeleton**
 
 Create `firmware-agent-workspace/agent_helpers.py`:
 
@@ -1439,7 +1439,7 @@ New-Item -ItemType Directory -Force -Path firmware-agent-workspace\product-skill
 New-Item -ItemType File -Force -Path firmware-agent-workspace\product-skills\.gitkeep,firmware-agent-workspace\service-skills\.gitkeep,firmware-agent-workspace\tool-skills\.gitkeep,firmware-agent-workspace\drafts\.gitkeep | Out-Null
 ```
 
-- [ ] **Step 4: Run workspace tests**
+- [x] **Step 4: Run workspace tests**
 
 Run:
 
@@ -1449,7 +1449,7 @@ python -m unittest tests.skills.test_firmware_memory_layer_workspace -v
 
 Expected: PASS.
 
-- [ ] **Step 5: Commit workspace skeleton**
+- [x] **Step 5: Commit workspace skeleton**
 
 Run:
 
@@ -1473,7 +1473,7 @@ Expected: commit succeeds.
 - Modify: `skills/firmware-probing-sandbox/SKILL.md`
 - Modify: `skills/firmware-cve-verification/SKILL.md`
 
-- [ ] **Step 1: Create failing integration tests**
+- [x] **Step 1: Create failing integration tests**
 
 Create `tests/skills/test_firmware_memory_layer_integration.py`:
 
@@ -1517,7 +1517,7 @@ if __name__ == "__main__":
     unittest.main()
 ```
 
-- [ ] **Step 2: Run integration tests and verify they fail**
+- [x] **Step 2: Run integration tests and verify they fail**
 
 Run:
 
@@ -1527,7 +1527,7 @@ python -m unittest tests.skills.test_firmware_memory_layer_integration -v
 
 Expected: FAIL because phase skills do not have memory sections yet.
 
-- [ ] **Step 3: Add the memory integration section to phase skills**
+- [x] **Step 3: Add the memory integration section to phase skills**
 
 In each phase skill listed in the test, add this section after `## Required Superpowers`:
 
@@ -1541,7 +1541,7 @@ Write newly learned durable patterns only under `firmware-agent-workspace/drafts
 
 Use phase-appropriate artifacts in nearby prose if helpful, but keep the section compact and do not duplicate the memory-layer workflow.
 
-- [ ] **Step 4: Run integration and existing skill tests**
+- [x] **Step 4: Run integration and existing skill tests**
 
 Run:
 
@@ -1551,7 +1551,7 @@ python -m unittest tests.skills.test_firmware_memory_layer_integration tests.ski
 
 Expected: PASS.
 
-- [ ] **Step 5: Validate changed skills**
+- [x] **Step 5: Validate changed skills**
 
 Run:
 
@@ -1568,7 +1568,7 @@ python C:\Users\Admin\.codex\skills\.system\skill-creator\scripts\quick_validate
 
 Expected: all commands exit 0 and print `Skill is valid!`.
 
-- [ ] **Step 6: Commit phase integration**
+- [x] **Step 6: Commit phase integration**
 
 Run:
 
@@ -1585,7 +1585,7 @@ Expected: commit succeeds.
 - Modify: `docs/superpowers/specs/2026-05-07-firmware-auto-pentest-skill-suite-design.md`
 - Modify: `docs/superpowers/specs/2026-05-07-firmware-skill-memory-layer-design.md`
 
-- [ ] **Step 1: Add implementation note to the main suite spec**
+- [x] **Step 1: Add implementation note to the main suite spec**
 
 Append this paragraph to the existing `## Implementation Notes` section in `docs/superpowers/specs/2026-05-07-firmware-auto-pentest-skill-suite-design.md`:
 
@@ -1594,7 +1594,7 @@ Append this paragraph to the existing `## Implementation Notes` section in `docs
 Wave 4 adds a firmware skill memory layer inspired by browser-harness. The memory layer remains advisory and dynamic: it suggests product, service, and tool memories from current artifacts, writes new lessons as drafts, and promotes memory only after validation. Existing phase skills keep their original responsibilities and use memory only as a compact, evidence-backed aid.
 ```
 
-- [ ] **Step 2: Add implementation note to the memory spec**
+- [x] **Step 2: Add implementation note to the memory spec**
 
 Append this paragraph to the existing `## Implementation Notes` section in `docs/superpowers/specs/2026-05-07-firmware-skill-memory-layer-design.md`:
 
@@ -1603,7 +1603,7 @@ Append this paragraph to the existing `## Implementation Notes` section in `docs
 The implementation adds `firmware-memory-layer`, deterministic helper scripts, a repo-local `firmware-agent-workspace`, and compact integration sections in existing phase skills. It does not install skills into `$CODEX_HOME/skills` and does not promote any product-specific operational memory by default.
 ```
 
-- [ ] **Step 3: Run full firmware skill suite tests**
+- [x] **Step 3: Run full firmware skill suite tests**
 
 Run:
 
@@ -1613,7 +1613,7 @@ python -m unittest tests.skills.test_firmware_artifact_contract tests.skills.tes
 
 Expected: all tests pass.
 
-- [ ] **Step 4: Validate all firmware skills**
+- [x] **Step 4: Validate all firmware skills**
 
 Run:
 
@@ -1633,7 +1633,7 @@ python C:\Users\Admin\.codex\skills\.system\skill-creator\scripts\quick_validate
 
 Expected: all commands exit 0 and print `Skill is valid!`.
 
-- [ ] **Step 5: Scan for scaffold text and sensitive fixture leaks**
+- [x] **Step 5: Scan for scaffold text and sensitive fixture leaks**
 
 Run:
 
@@ -1644,7 +1644,7 @@ Select-String -Path .\firmware-agent-workspace\**\*,.\skills\firmware-memory-lay
 
 Expected: no output.
 
-- [ ] **Step 6: Check whitespace and git status**
+- [x] **Step 6: Check whitespace and git status**
 
 Run:
 
@@ -1655,7 +1655,7 @@ git status --short --branch
 
 Expected: `git diff --check` exits 0. `git status` shows only intended memory-layer documentation changes before the final commit.
 
-- [ ] **Step 7: Commit documentation and final verification state**
+- [x] **Step 7: Commit documentation and final verification state**
 
 Run:
 
