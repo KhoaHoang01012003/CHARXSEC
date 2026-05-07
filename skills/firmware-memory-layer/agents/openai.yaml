@@ -1,0 +1,4 @@
+interface:
+  display_name: "Firmware Memory Layer"
+  short_description: "Reuse firmware pentest field memories safely"
+  default_prompt: "Use firmware memory layer to suggest relevant product, service, and tool memories from firmware artifacts, validate drafts, and promote only safe reusable memory."
