@@ -1,0 +1,4 @@
+interface:
+  display_name: "Firmware Probing Sandbox"
+  short_description: "Generate safe firmware probes"
+  default_prompt: "Use firmware probing sandbox to generate local payloads, parsers, API clients, corpus, and replay scripts without network by default or CVE claims."
