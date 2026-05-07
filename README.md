@@ -65,10 +65,13 @@ document/charx_sec_3100_qiling_lab_implementation_report.md
 
 ## Local Pentest Workstation
 
-Sau khi bootstrap firmware lab, có thể cài bộ công cụ pentest local:
+Sau khi bootstrap firmware lab, co the cai bo cong cu pentest local:
 
 ```powershell
 .\emulation\charx_v190\charx-pentest.cmd bootstrap
 ```
 
-Hướng dẫn tiếng Việt: [charx_sec_3100_local_pentest_workstation_guide_vi.md](document/charx_sec_3100_local_pentest_workstation_guide_vi.md)
+Huong dan tieng Viet:
+
+- [charx_sec_3100_local_pentest_workstation_guide_vi.md](document/charx_sec_3100_local_pentest_workstation_guide_vi.md)
+- [firmware_auto_pentest_skill_suite_usage_vi.md](docs/firmware_auto_pentest_skill_suite_usage_vi.md)
