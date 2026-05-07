@@ -51,6 +51,8 @@ The only valid final states are `ready_for_pentest=true` or a blocker with root-
 
 ## Safety
 
+Operate only on firmware and runtimes the user is authorized to test. Keep destructive probes disabled by default; record runtime modifications; prefer local evidence and redacted summaries; use exact dates and versions in vulnerability reports; do not install tools without explicit user approval.
+
 Do not commit firmware, runtime rootfs, logs, packet captures, credentials, private keys, certs, cookies, tokens, or identity material. Record runtime modifications and keep destructive endpoints disabled by default.
 
 ## Common Mistakes

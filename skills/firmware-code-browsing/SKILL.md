@@ -49,6 +49,8 @@ If context is too large for LLM use, shrink it before proceeding.
 
 ## Safety
 
+Operate only on firmware and runtimes the user is authorized to test. Keep destructive probes disabled by default; record runtime modifications; prefer local evidence and redacted summaries; use exact dates and versions in vulnerability reports; do not install tools without explicit user approval.
+
 Do not commit firmware, extracted rootfs, raw proprietary code, secrets, private keys, certificates, tokens, or full configs. Store raw extracts in ignored local evidence directories and expose only compact redacted summaries.
 
 ## Common Mistakes

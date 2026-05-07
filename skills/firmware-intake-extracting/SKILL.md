@@ -47,6 +47,8 @@ If no candidate exists, write a blocker artifact and stop. Do not continue to em
 
 ## Safety
 
+Operate only on firmware and runtimes the user is authorized to test. Keep destructive probes disabled by default; record runtime modifications; prefer local evidence and redacted summaries; use exact dates and versions in vulnerability reports; do not install tools without explicit user approval.
+
 Do not commit firmware, extracted rootfs, runtime dumps, secrets, credentials, private keys, certificates, or raw proprietary payloads. Human-facing summaries must be based on metadata and redacted extracts.
 
 Set `behavior_claim_allowed=false` for extraction-only observations.

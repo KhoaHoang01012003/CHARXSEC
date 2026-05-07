@@ -48,6 +48,8 @@ Hooking passes only when the transcript or extract proves the target workload ra
 
 ## Safety
 
+Operate only on firmware and runtimes the user is authorized to test. Keep destructive probes disabled by default; record runtime modifications; prefer local evidence and redacted summaries; use exact dates and versions in vulnerability reports; do not install tools without explicit user approval.
+
 Do not commit firmware, runtime rootfs, raw logs, packet captures, credentials, cookies, tokens, private keys, certificates, or identity material. Keep raw artifacts in ignored local evidence directories and only summarize redacted extracts.
 
 ## Common Mistakes

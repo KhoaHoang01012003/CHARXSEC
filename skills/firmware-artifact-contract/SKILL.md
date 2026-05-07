@@ -40,9 +40,13 @@ Finding records may use `CVE candidate` language only after reproduction status,
 
 Do not claim an official CVE assignment unless the CVE ID exists in an official or vendor source. Static suspicion, Qiling-only behavior, sandbox-only output, or public writeups alone must produce `unverified`, `duplicate_known`, or `blocked`, not `verified`.
 
+## Safety
+
+Operate only on firmware and runtimes the user is authorized to test. Keep destructive probes disabled by default; record runtime modifications; prefer local evidence and redacted summaries; use exact dates and versions in vulnerability reports; do not install tools without explicit user approval.
+
 ## Validation
 
-Run the bundled validator before trusting Wave 1 artifacts:
+Run the bundled validator before trusting Wave 1, Wave 2, or Wave 3 artifacts:
 
 ```powershell
 python skills/firmware-artifact-contract/scripts/validate_artifact.py --artifact-type service_readiness --schema-dir skills/firmware-artifact-contract/references/schemas path/to/service_readiness.json

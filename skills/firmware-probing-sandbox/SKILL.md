@@ -48,6 +48,8 @@ Probe generation passes only when generated probes run locally or a blocker expl
 
 ## Safety
 
+Operate only on firmware and runtimes the user is authorized to test. Keep destructive probes disabled by default; record runtime modifications; prefer local evidence and redacted summaries; use exact dates and versions in vulnerability reports; do not install tools without explicit user approval.
+
 Do not commit firmware, generated exploit payloads intended for unauthorized targets, runtime rootfs, credentials, cookies, tokens, private keys, certificates, or identity material. Keep generated artifacts in local evidence directories and do not enable live network calls without explicit user approval.
 
 ## Common Mistakes

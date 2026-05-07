@@ -46,6 +46,8 @@ If identity is unclear, write a blocker and do not let emulation rely on undocum
 
 ## Safety
 
+Operate only on firmware and runtimes the user is authorized to test. Keep destructive probes disabled by default; record runtime modifications; prefer local evidence and redacted summaries; use exact dates and versions in vulnerability reports; do not install tools without explicit user approval.
+
 Do not commit firmware, private vendor files, secrets, API keys, cookies, or full proprietary dumps into research notes. Do not treat public writeups as runtime truth.
 
 Use exact dates for current-source claims.
