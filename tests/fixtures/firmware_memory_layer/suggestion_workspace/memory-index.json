@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-05-07T00:00:00Z",
+  "workspace_root": "tests/fixtures/firmware_memory_layer/suggestion_workspace",
+  "memories": [
+    {
+      "path": "service-skills/rauc/update-flow.md",
+      "memory_type": "service",
+      "title": "RAUC Update Flow",
+      "status": "active",
+      "tags": ["rauc", "update", "bundle"],
+      "applies_to": {"vendors": [], "models": [], "firmware_versions": [], "services": ["rauc"], "runtimes": [], "tools": ["rauc"]},
+      "artifact_sensitivity": "local_metadata",
+      "last_verified": "2026-05-07"
+    },
+    {
+      "path": "tool-skills/qemu-user/common-blockers.md",
+      "memory_type": "tool",
+      "title": "QEMU User Common Blockers",
+      "status": "active",
+      "tags": ["qemu-user", "emulation", "blocker"],
+      "applies_to": {"vendors": [], "models": [], "firmware_versions": [], "services": [], "runtimes": ["qemu-user"], "tools": ["qemu-user", "strace"]},
+      "artifact_sensitivity": "local_metadata",
+      "last_verified": "2026-05-07"
+    },
+    {
+      "path": "service-skills/mqtt/broker-routing.md",
+      "memory_type": "service",
+      "title": "MQTT Broker Routing",
+      "status": "active",
+      "tags": ["mqtt", "broker"],
+      "applies_to": {"vendors": [], "models": [], "firmware_versions": [], "services": ["mqtt"], "runtimes": [], "tools": []},
+      "artifact_sensitivity": "local_metadata",
+      "last_verified": "2026-05-07"
+    }
+  ]
+}

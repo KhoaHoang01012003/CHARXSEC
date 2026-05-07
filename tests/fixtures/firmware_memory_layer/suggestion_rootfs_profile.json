@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-05-07T00:00:00Z",
+  "generated_by": "test",
+  "source_inputs": [],
+  "warnings": [],
+  "errors": [],
+  "artifact_type": "rootfs_profile",
+  "architecture": "arm",
+  "service_candidates": [{"name": "rauc", "path": "usr/bin/rauc"}],
+  "package_hints": ["rauc"]
+}
