@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-05-07T00:00:00Z",
+  "workspace_root": "tests/fixtures/firmware_memory_layer/promotion_workspace",
+  "memories": []
+}
