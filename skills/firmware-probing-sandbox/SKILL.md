@@ -16,6 +16,12 @@ Use this skill to generate probes in a Python sandbox with no network by default
 - Use `superpowers:verification-before-completion` before claiming probe generation succeeded.
 - Use `firmware-artifact-contract` before writing `probe_plan.json`, `sandbox_observations.jsonl`, or finding hypotheses.
 
+## Memory Layer
+
+Use `firmware-memory-layer` when `firmware-agent-workspace` exists and current artifacts are available for this phase. Run `suggest_memory.py` with the smallest relevant artifact set, read only suggestions marked `read_now`, and treat memory as a lead rather than behavior truth.
+
+Write newly learned durable patterns only under `firmware-agent-workspace/drafts/`. Validate drafts before reuse and do not promote memory without validation.
+
 ## Inputs
 
 - Current hypothesis from `skill_context.json`, `code_browser_findings.jsonl`, `observations.jsonl`, or `debug_observations.jsonl`.

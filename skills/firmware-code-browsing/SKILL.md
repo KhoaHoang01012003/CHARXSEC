@@ -15,6 +15,12 @@ Use this skill to turn `rootfs_profile.json` and `service_graph.json` into compa
 - Use `superpowers:verification-before-completion` before claiming context is ready for LLM use.
 - Use `firmware-artifact-contract` before writing `skill_context.json`, `code_browser_findings.jsonl`, or `reverse_queue.json`.
 
+## Memory Layer
+
+Use `firmware-memory-layer` when `firmware-agent-workspace` exists and current artifacts are available for this phase. Run `suggest_memory.py` with the smallest relevant artifact set, read only suggestions marked `read_now`, and treat memory as a lead rather than behavior truth.
+
+Write newly learned durable patterns only under `firmware-agent-workspace/drafts/`. Validate drafts before reuse and do not promote memory without validation.
+
 ## Inputs
 
 - `rootfs_profile.json`.

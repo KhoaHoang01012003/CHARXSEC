@@ -15,6 +15,12 @@ Use this skill before emulation to prevent invented behavior. Every product beha
 - Use `superpowers:verification-before-completion` before claiming research is sufficient for emulation.
 - Use `firmware-artifact-contract` before writing `model_research.json`.
 
+## Memory Layer
+
+Use `firmware-memory-layer` when `firmware-agent-workspace` exists and current artifacts are available for this phase. Run `suggest_memory.py` with the smallest relevant artifact set, read only suggestions marked `read_now`, and treat memory as a lead rather than behavior truth.
+
+Write newly learned durable patterns only under `firmware-agent-workspace/drafts/`. Validate drafts before reuse and do not promote memory without validation.
+
 ## Inputs
 
 - `firmware_manifest.json`.

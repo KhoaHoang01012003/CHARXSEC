@@ -15,6 +15,12 @@ Use this skill after extraction and model research to create `rootfs_profile.jso
 - Use `superpowers:verification-before-completion` before claiming profiling is complete.
 - Use `firmware-artifact-contract` before writing JSON artifacts.
 
+## Memory Layer
+
+Use `firmware-memory-layer` when `firmware-agent-workspace` exists and current artifacts are available for this phase. Run `suggest_memory.py` with the smallest relevant artifact set, read only suggestions marked `read_now`, and treat memory as a lead rather than behavior truth.
+
+Write newly learned durable patterns only under `firmware-agent-workspace/drafts/`. Validate drafts before reuse and do not promote memory without validation.
+
 ## Inputs
 
 - Rootfs candidate path from `firmware_manifest.json`.

@@ -15,6 +15,12 @@ Use this skill to start the highest-fidelity practical runtime and prove readine
 - Use `superpowers:verification-before-completion` before claiming the runtime is ready.
 - Use `firmware-artifact-contract` before writing `runtime_profile.json`, `service_readiness.json`, or `api_smoke_results.json`.
 
+## Memory Layer
+
+Use `firmware-memory-layer` when `firmware-agent-workspace` exists and current artifacts are available for this phase. Run `suggest_memory.py` with the smallest relevant artifact set, read only suggestions marked `read_now`, and treat memory as a lead rather than behavior truth.
+
+Write newly learned durable patterns only under `firmware-agent-workspace/drafts/`. Validate drafts before reuse and do not promote memory without validation.
+
 ## Inputs
 
 - `firmware_manifest.json`.
