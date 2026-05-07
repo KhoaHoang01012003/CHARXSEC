@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-05-07T00:00:00Z",
+  "generated_by": "firmware-cve-verification test-fixture",
+  "source_inputs": [{"artifact": "findings.jsonl"}, {"artifact": "observations.jsonl"}],
+  "warnings": [],
+  "errors": [],
+  "artifact_type": "verifier_report",
+  "target_finding_id": "FW-0001",
+  "verdict": "verified",
+  "reproduction_status": "reproduced",
+  "evidence_labels": ["observed_runtime_live_hook"],
+  "duplicate_checks": [{"source": "NVD", "result": "no_match"}, {"source": "vendor_advisory", "result": "no_match"}],
+  "disclosure_status": "internal_triage"
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-05-07T00:02:00Z",
+  "generated_by": "firmware-cve-verification test-fixture",
+  "source_inputs": [{"artifact": "code_browser_findings.jsonl"}],
+  "warnings": [],
+  "errors": [],
+  "artifact_type": "verifier_report",
+  "target_finding_id": "FW-0002",
+  "verdict": "verified",
+  "reproduction_status": "reproduced",
+  "evidence_labels": ["observed_static_artifact"],
+  "duplicate_checks": [{"source": "NVD", "result": "not_checked"}],
+  "disclosure_status": "internal_triage"
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-05-07T00:00:00Z",
+  "generated_by": "firmware-probing-sandbox test-fixture",
+  "source_inputs": [{"artifact": "skill_context.json"}, {"artifact": "service_readiness.json"}],
+  "warnings": [],
+  "errors": [],
+  "artifact_type": "probe_plan",
+  "target": "web_api_status",
+  "sandbox_network": "disabled",
+  "payloads": [{"name": "status_baseline", "type": "http_request_template"}],
+  "safety_constraints": ["no live runtime calls", "no destructive endpoints", "local parser execution only"]
+}
